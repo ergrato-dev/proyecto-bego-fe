@@ -1,0 +1,151 @@
+# =============================================================================
+# NN Auth System — .gitignore
+# Monorepo: be/ (Go) + fe/ (React/Vite/TypeScript) + PostgreSQL/Docker
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Variables de entorno — NUNCA versionar secrets ni credenciales
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# -----------------------------------------------------------------------------
+# Go — Backend (be/)
+# -----------------------------------------------------------------------------
+
+# Binarios compilados
+be/bin/
+be/*.exe
+be/*.out
+
+# Caché de builds de Go
+be/tmp/
+
+# Cobertura de tests
+be/coverage.out
+be/coverage.html
+
+# Profiling
+be/*.prof
+be/*.pprof
+
+# Base de datos SQLite (si se usa en tests)
+be/*.db
+be/*.sqlite
+
+# golangci-lint caché
+be/.golangci-lint-cache/
+
+# Air (live reload) — archivo de configuración local
+be/.air.toml
+
+# -----------------------------------------------------------------------------
+# Node.js / Frontend (fe/)
+# -----------------------------------------------------------------------------
+
+# Dependencias
+fe/node_modules/
+
+# Build de producción
+fe/dist/
+fe/.vite/
+
+# Cobertura de tests
+fe/coverage/
+
+# Logs
+fe/npm-debug.log*
+fe/yarn-debug.log*
+fe/yarn-error.log*
+fe/pnpm-debug.log*
+
+# Cache de herramientas
+fe/.eslintcache
+fe/.prettier-cache
+
+# TypeScript build info
+fe/*.tsbuildinfo
+fe/tsconfig.tsbuildinfo
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+
+# Datos persistentes de PostgreSQL (volúmenes locales si se montan en ./data)
+data/
+postgres-data/
+
+# -----------------------------------------------------------------------------
+# Editores e IDEs
+# -----------------------------------------------------------------------------
+
+# VSCode — settings personales (no de equipo)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/*.code-snippets
+
+# Sí versionar — configuración de extensiones del proyecto
+# .vscode/extensions.json  ← mantener si existe
+
+# JetBrains (GoLand, WebStorm)
+.idea/
+*.iml
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------------------------------------------------------------
+# Sistemas Operativos
+# -----------------------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -----------------------------------------------------------------------------
+# Misceláneos
+# -----------------------------------------------------------------------------
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.orig
+*.log
+
+# Archivos de certificados locales (TLS en desarrollo)
+*.pem
+*.key
+*.crt
+*.p12

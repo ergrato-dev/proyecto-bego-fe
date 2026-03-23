@@ -2,12 +2,12 @@
 
 ## Información del Bootcamp
 
-| Campo        | Valor                                             |
-|--------------|---------------------------------------------------|
-| **Proyecto** | NN Auth System                                    |
-| **Duración estimada del video** | 45–60 minutos          |
-| **Audiencia** | Aprendices SENA — nivel intermedio de programación |
-| **Objetivo** | Construir un sistema de autenticación completo con Go y React desde cero |
+| Campo                           | Valor                                                                    |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| **Proyecto**                    | NN Auth System                                                           |
+| **Duración estimada del video** | 45–60 minutos                                                            |
+| **Audiencia**                   | Aprendices SENA — nivel intermedio de programación                       |
+| **Objetivo**                    | Construir un sistema de autenticación completo con Go y React desde cero |
 
 ---
 
@@ -29,6 +29,7 @@ TOTAL: ~60 minutos
 ## Segmento 1 — Introducción y Contexto (0:00 – 3:00)
 
 ### Objetivo del segmento
+
 Ubicar al estudiante en el contexto del proyecto y generar motivación.
 
 ### Guión
@@ -54,6 +55,7 @@ Ubicar al estudiante en el contexto del proyecto y generar motivación.
 ## Segmento 2 — Arquitectura y Tech Stack (3:00 – 10:00)
 
 ### Objetivo del segmento
+
 Explicar las decisiones tecnológicas y la estructura del proyecto.
 
 ### Guión
@@ -63,18 +65,23 @@ Explicar las decisiones tecnológicas y la estructura del proyecto.
 > "Veamos el stack tecnológico y por qué elegimos cada herramienta."
 
 **Go + Gin:**
+
 > "Para el backend usamos Go, un lenguaje compilado y estáticamente tipado que ofrece excelente rendimiento. Gin es el framework HTTP más popular de Go — comparable a Express en Node.js o FastAPI en Python, pero más rápido."
 
 **GORM:**
+
 > "Para interactuar con la base de datos usamos GORM, un ORM que nos permite trabajar con structs de Go en lugar de escribir SQL manualmente. Pero ojo — vamos a aprender también las migraciones en SQL puro porque es importante entender qué hay debajo."
 
 **postgresql + golang-migrate:**
+
 > "La base de datos es PostgreSQL 17. Para las migraciones usamos golang-migrate, que aplica archivos `.sql` versionados — no Python ni Go, sino SQL puro. Esto nos da transparencia total sobre los cambios en la base de datos."
 
 **JWT:**
+
 > "La autenticación es stateless y usa JWT — JSON Web Tokens. Emitimos dos tokens: un access token que dura 15 minutos, y un refresh token que dura 7 días. Vamos a ver exactamente por qué esta duración corta es una decisión de seguridad."
 
 **React + Vite + TypeScript:**
+
 > "El frontend es React 18 con TypeScript para tipado estático, y Vite como bundler ultrarrápido. Los estilos son con TailwindCSS."
 
 ---
@@ -86,6 +93,7 @@ Explicar las decisiones tecnológicas y la estructura del proyecto.
 ## Segmento 3 — Setup del Entorno (10:00 – 18:00)
 
 ### Objetivo del segmento
+
 Guiar al estudiante en la configuración del entorno de desarrollo.
 
 ### Guión
@@ -95,6 +103,7 @@ Guiar al estudiante en la configuración del entorno de desarrollo.
 > "Vamos a configurar el entorno. Si tienes Docker instalado, esto va a ser muy rápido."
 
 **Con Docker:**
+
 ```bash
 # Clonar el repositorio
 git clone https://github.com/tu-usuario/nn-auth-system.git
@@ -112,6 +121,7 @@ docker compose ps
 > "Mailpit está disponible en http://localhost:8025 — ábrelo, lo vamos a usar más adelante."
 
 **Configurar el Backend:**
+
 ```bash
 cd be
 cp .env.example .env
@@ -130,6 +140,7 @@ go run ./cmd/api/main.go
 > "Si ves 'Server running on :8000', perfecto. Si hay un error de conexión, verifica que Docker esté corriendo."
 
 **Configurar el Frontend:**
+
 ```bash
 cd fe
 cp .env.example .env
@@ -144,6 +155,7 @@ pnpm dev
 ## Segmento 4 — Backend: Modelos y Seguridad (18:00 – 28:00)
 
 ### Objetivo del segmento
+
 Explicar los modelos de datos, las migraciones y las funciones de seguridad críticas.
 
 ### Guión
@@ -197,6 +209,7 @@ func HashPassword(password string) (string, error) {
 ## Segmento 5 — Backend: Handlers y Middleware (28:00 – 40:00)
 
 ### Objetivo del segmento
+
 Mostrar cómo funcionan los handlers de autenticación y el middleware JWT.
 
 ### Guión
@@ -241,6 +254,7 @@ func AuthMiddleware(secretKey string) gin.HandlerFunc {
 ## Segmento 6 — Frontend: Componentes y Flujos (40:00 – 52:00)
 
 ### Objetivo del segmento
+
 Mostrar la arquitectura del frontend y los flujos de autenticación desde React.
 
 ### Guión
@@ -258,10 +272,10 @@ Mostrar la arquitectura del frontend y los flujos de autenticación desde React.
 // ¿Impacto? Sin este contexto, cada componente tendría que gestionar su propio
 //           estado de autenticación — código duplicado e inconsistente.
 interface AuthContextType {
-    user: UserResponse | null;
-    isLoading: boolean;
-    login: (credentials: LoginRequest) => Promise<void>;
-    logout: () => void;
+  user: UserResponse | null;
+  isLoading: boolean;
+  login: (credentials: LoginRequest) => Promise<void>;
+  logout: () => void;
 }
 ```
 
@@ -278,6 +292,7 @@ interface AuthContextType {
 ## Segmento 7 — Demostración Final y Cierre (52:00 – 60:00)
 
 ### Objetivo del segmento
+
 Demostrar el flujo completo del sistema funcionando.
 
 ### Guión
@@ -326,26 +341,26 @@ Demostrar el flujo completo del sistema funcionando.
 
 ## Notas de Producción
 
-| Aspecto           | Detalle                                                        |
-|-------------------|----------------------------------------------------------------|
-| Resolución        | 1920x1080 mínimo                                               |
-| Terminal          | Fondo oscuro, fuente monoespaciada grande (≥ 16px)            |
-| Navegador         | Chrome DevTools visible en segmentos de frontend              |
-| Velocidad         | No acelerar el video — las pausas mientras se escribe son pedagógicas |
-| Marcadores        | Usar capítulos de YouTube para cada segmento                  |
-| Código en pantalla| Mostrar el archivo completo, no solo el fragmento mencionado  |
+| Aspecto            | Detalle                                                               |
+| ------------------ | --------------------------------------------------------------------- |
+| Resolución         | 1920x1080 mínimo                                                      |
+| Terminal           | Fondo oscuro, fuente monoespaciada grande (≥ 16px)                    |
+| Navegador          | Chrome DevTools visible en segmentos de frontend                      |
+| Velocidad          | No acelerar el video — las pausas mientras se escribe son pedagógicas |
+| Marcadores         | Usar capítulos de YouTube para cada segmento                          |
+| Código en pantalla | Mostrar el archivo completo, no solo el fragmento mencionado          |
 
 ---
 
 ## Recursos Adicionales para el Estudiante
 
-| Recurso                 | URL / Comando                                                |
-|-------------------------|--------------------------------------------------------------|
-| Documentación de Gin    | https://gin-gonic.com/docs/                                  |
-| Documentación de GORM   | https://gorm.io/docs/                                        |
-| golang-jwt              | https://github.com/golang-jwt/jwt                            |
-| golang.org/x/crypto     | `go doc golang.org/x/crypto/bcrypt`                          |
-| React Docs              | https://react.dev                                            |
-| TailwindCSS             | https://tailwindcss.com/docs                                 |
-| OWASP Top 10            | `_docs/conceptos/owasp-top-10.md`                            |
-| Arquitectura del sistema| `_docs/referencia-tecnica/architecture.md`                   |
+| Recurso                  | URL / Comando                              |
+| ------------------------ | ------------------------------------------ |
+| Documentación de Gin     | https://gin-gonic.com/docs/                |
+| Documentación de GORM    | https://gorm.io/docs/                      |
+| golang-jwt               | https://github.com/golang-jwt/jwt          |
+| golang.org/x/crypto      | `go doc golang.org/x/crypto/bcrypt`        |
+| React Docs               | https://react.dev                          |
+| TailwindCSS              | https://tailwindcss.com/docs               |
+| OWASP Top 10             | `_docs/conceptos/owasp-top-10.md`          |
+| Arquitectura del sistema | `_docs/referencia-tecnica/architecture.md` |
