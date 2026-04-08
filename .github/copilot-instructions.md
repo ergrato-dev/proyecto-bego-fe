@@ -25,44 +25,52 @@
 
 ### 2.1 Backend (`be/`)
 
-| Herramienta             | Versión | Rol                                        |
-| ----------------------- | ------- | ------------------------------------------ |
-| Go                      | 1.22+   | Lenguaje principal del backend             |
-| Gin                     | 1.9+    | Framework HTTP de alto rendimiento         |
-| GORM                    | 2.0+    | ORM para interactuar con la base de datos  |
-| golang-migrate          | 4+      | Migraciones de base de datos versionadas   |
-| golang-jwt/jwt          | v5      | Creación y verificación de tokens JWT      |
-| golang.org/x/crypto     | latest  | Hashing seguro de contraseñas con bcrypt   |
-| go-playground/validator | v10     | Validación de structs de request           |
-| joho/godotenv           | latest  | Carga de variables de entorno desde `.env` |
-| ulule/limiter           | v3      | Rate limiting por IP                       |
-| jackc/pgx               | v5      | Driver PostgreSQL para Go                  |
-| jordan-wright/email     | latest  | Envío de emails vía SMTP                   |
-| stretchr/testify        | latest  | Assertions y mocks para tests              |
-| golangci-lint           | latest  | Linter + analizador estático para Go       |
+| Herramienta             | Versión pinada | Rol                                        |
+| ----------------------- | -------------- | ------------------------------------------ |
+| Go                      | **1.24.2**     | Lenguaje principal del backend             |
+| gin-gonic/gin           | **v1.10.0**    | Framework HTTP de alto rendimiento         |
+| gorm.io/gorm            | **v1.25.12**   | ORM para interactuar con la base de datos  |
+| gorm.io/driver/postgres | **v1.5.11**    | Driver GORM para PostgreSQL                |
+| golang-migrate/migrate  | **v4.18.1**    | Migraciones de base de datos versionadas   |
+| golang-jwt/jwt/v5       | **v5.2.1**     | Creación y verificación de tokens JWT      |
+| golang.org/x/crypto     | **v0.37.0**    | Hashing seguro de contraseñas con bcrypt   |
+| go-playground/validator | **v10.24.0**   | Validación de structs de request           |
+| joho/godotenv           | **v1.5.1**     | Carga de variables de entorno desde `.env` |
+| ulule/limiter/v3        | **v3.11.2**    | Rate limiting por IP                       |
+| jackc/pgx/v5            | **v5.7.2**     | Driver PostgreSQL para Go                  |
+| jordan-wright/email     | **v4.0.1**     | Envío de emails vía SMTP                   |
+| stretchr/testify        | **v1.10.0**    | Assertions y mocks para tests              |
+| golangci-lint           | **v1.63.4**    | Linter + analizador estático para Go       |
 
 ### 2.2 Frontend (`fe/`)
 
-| Herramienta     | Versión | Rol                                          |
-| --------------- | ------- | -------------------------------------------- |
-| Node.js         | 20 LTS+ | Runtime de JavaScript                        |
-| React           | 18+     | Biblioteca para interfaces de usuario        |
-| Vite            | 6+      | Bundler y dev server ultrarrápido            |
-| TypeScript      | 5.0+    | Superset tipado de JavaScript                |
-| TailwindCSS     | 4+      | Framework CSS utility-first                  |
-| React Router    | 7+      | Enrutamiento del lado del cliente            |
-| Axios           | latest  | Cliente HTTP para comunicación con la API    |
-| Vitest          | latest  | Framework de testing compatible con Vite     |
-| Testing Library | latest  | Utilidades de testing para componentes React |
-| ESLint          | latest  | Linter para TypeScript/React                 |
-| Prettier        | latest  | Formateador de código                        |
+| Herramienta                 | Versión pinada | Rol                                          |
+| --------------------------- | -------------- | -------------------------------------------- |
+| Node.js                     | **20.18.2**    | Runtime de JavaScript (LTS Maintenance)      |
+| react                       | **18.3.1**     | Biblioteca para interfaces de usuario        |
+| react-dom                   | **18.3.1**     | Renderizado de React en el DOM               |
+| vite                        | **6.2.0**      | Bundler y dev server ultrarrápido            |
+| typescript                  | **5.8.2**      | Superset tipado de JavaScript                |
+| tailwindcss                 | **4.1.0**      | Framework CSS utility-first                  |
+| @tailwindcss/vite           | **4.1.0**      | Plugin oficial de TailwindCSS para Vite      |
+| react-router-dom            | **7.4.0**      | Enrutamiento del lado del cliente            |
+| axios                       | **1.8.4**      | Cliente HTTP para comunicación con la API    |
+| vitest                      | **3.1.0**      | Framework de testing compatible con Vite     |
+| @testing-library/react      | **16.3.0**     | Utilidades de testing para componentes React |
+| @testing-library/user-event | **14.6.1**     | Simulación de eventos de usuario en tests    |
+| @types/react                | **18.3.20**    | Tipos TypeScript para React                  |
+| @types/react-dom            | **18.3.5**     | Tipos TypeScript para ReactDOM               |
+| eslint                      | **9.23.0**     | Linter para TypeScript/React                 |
+| prettier                    | **3.5.3**      | Formateador de código                        |
+| jsdom                       | **26.0.0**     | Simulación del DOM en Node.js para tests     |
 
 ### 2.3 Base de Datos
 
-| Herramienta    | Versión | Rol                                             |
-| -------------- | ------- | ----------------------------------------------- |
-| PostgreSQL     | 17+     | Base de datos relacional principal              |
-| Docker Compose | latest  | Orquestación de contenedores (BD en desarrollo) |
+| Herramienta     | Versión pinada                            | Rol                                             |
+| --------------- | ----------------------------------------- | ----------------------------------------------- |
+| PostgreSQL      | **17.4** (Docker: `postgres:17.4-alpine`) | Base de datos relacional principal              |
+| Docker Compose  | **v2.32.4** (plugin CLI)                  | Orquestación de contenedores (BD en desarrollo) |
+| axllent/mailpit | **v1.22.0**                               | Servidor SMTP de desarrollo (captura emails)    |
 
 ### 2.4 Autenticación
 
@@ -163,10 +171,10 @@ No se necesita `venv` como en Python — Go modules maneja el entorno de forma n
 ### 4.2 Node.js — SIEMPRE usar `pnpm`
 
 ```bash
-# ✅ CORRECTO
+# ✅ CORRECTO — versión exacta con pnpm
 pnpm install
-pnpm add axios
-pnpm add -D vitest
+pnpm add axios@1.8.4          # versión EXACTA — sin ^ ni ~
+pnpm add -D vitest@3.1.0      # versión EXACTA — sin ^ ni ~
 pnpm dev
 pnpm test
 pnpm build
@@ -178,6 +186,10 @@ npm run dev        # ← PROHIBIDO
 # ❌ INCORRECTO — NUNCA usar yarn
 yarn install       # ← PROHIBIDO
 ```
+
+> **Importante:** en `package.json` las versiones NO deben tener `^` ni `~`.
+> Usar `"axios": "1.8.4"` — nunca `"axios": "^1.8.4"`.
+> El archivo `pnpm-lock.yaml` SIEMPRE debe commitearse al repositorio.
 
 ### 4.3 Variables de entorno
 
@@ -214,7 +226,7 @@ proyecto/                          # Raíz del monorepo
 ├── docker-compose.yml             # PostgreSQL 17 + Mailpit para desarrollo
 ├── README.md
 │
-├── _docs/                         # 📚 Documentación del proyecto
+├── docs/                          # 📚 Documentación del proyecto
 │   ├── referencia-tecnica/
 │   │   ├── architecture.md
 │   │   ├── api-endpoints.md
@@ -496,6 +508,8 @@ cd fe && pnpm format                # formatear código
 - [ ] ¿Las variables sensibles están en `.env` y no hardcodeadas?
 - [ ] ¿El `.env.example` se actualizó si se agregaron nuevas variables?
 - [ ] ¿Los errores de Go se manejan explícitamente (no ignorados con `_`)?
+- [ ] ¿Las versiones en `go.mod` y `package.json` son EXACTAS (sin `^`, `~`, `+`, `latest`)?
+- [ ] ¿Se ejecutó `govulncheck ./...` (Go) o `pnpm audit` (frontend) sin vulnerabilidades críticas?
 
 ---
 
@@ -534,6 +548,63 @@ cd fe && pnpm format                # formatear código
 - Usar siempre GORM (nunca raw SQL sin parametrizar)
 - Conexiones con pool configurado (`db.DB().SetMaxOpenConns()`)
 - Credenciales en variables de entorno
+
+### 9.6 Gestión de Versiones y Auditoría de Dependencias
+
+> **Regla fundamental:** Toda dependencia — librería, runtime, imagen Docker — usa versión EXACTA y pinada. No se permite `latest`, `*`, `^`, `~`, ni rangos `+`.
+
+**¿Por qué versiones pinadas?**
+
+- **Reproducibilidad:** El mismo código produce el mismo binario en cualquier máquina y momento.
+- **Supply chain attacks (A06 OWASP):** Un paquete con `latest` puede descargar una versión comprometida sin intervención del desarrollador.
+- **Builds deterministas:** `go.sum` y `pnpm-lock.yaml` actúan como checksums — solo funcionan correctamente con versiones fijas.
+
+**Comandos de auditoría obligatorios:**
+
+```bash
+# --- Go (backend) ---
+
+# Detectar vulnerabilidades en dependencias Go (base de datos OSV)
+govulncheck ./...
+
+# Verificar que go.sum está actualizado y no hay dependencias fantasma
+go mod verify
+
+# Revisar dependencias directas e indirectas
+go mod graph
+
+# Instalar govulncheck (una sola vez)
+go install golang.org/x/vuln/cmd/govulncheck@v1.1.4
+
+# --- Node.js / pnpm (frontend) ---
+
+# Auditar vulnerabilidades conocidas (base de datos npm)
+pnpm audit
+
+# Auditar y actualizar solo patches seguros
+pnpm audit --fix
+
+# Ver árbol de dependencias
+pnpm list --depth=3
+```
+
+**Política al actualizar dependencias:**
+
+1. Actualizar **una dependencia a la vez**
+2. Ejecutar el audit correspondiente
+3. Correr todos los tests: `go test ./...` / `pnpm test`
+4. Commitear con `chore(deps): update <paquete> from vX.Y.Z to vA.B.C`
+
+**Notas de seguridad por dependencia (versiones actuales):**
+
+| Dependencia         | Versión | Nota de seguridad                                                                                   |
+| ------------------- | ------- | --------------------------------------------------------------------------------------------------- |
+| golang-jwt/jwt/v5   | v5.2.1  | v4 tenía CVE-2022-21703; v5 lo corrige                                                              |
+| golang.org/x/crypto | v0.37.0 | CVE-2023-48795 (Terrapin) afectó SSH en <v0.17.0; versiones ≥v0.17.0 corregidas. bcrypt no afectado |
+| axios               | 1.8.4   | CVE-2023-45857 (CSRF) en versiones <1.6.0; ≥1.6.0 corregido                                         |
+| vite                | 6.2.0   | CVE-2024-45811/45812 afectaron Vite 5.x <5.4.6; Vite 6 no afectado                                  |
+| jackc/pgx/v5        | v5.7.2  | Sin CVEs conocidos en rama v5                                                                       |
+| postgres (Docker)   | 17.4    | Sin CVEs críticos en 17.x a la fecha de este documento                                              |
 
 ---
 
@@ -662,9 +733,14 @@ Paso 2: POST /api/v1/auth/reset-password { token, new_password }
 
 ```yaml
 # Solo para desarrollo local — PostgreSQL 17 + Mailpit
+# ¿Qué? Imágenes Docker con versiones EXACTAS (pinadas).
+# ¿Para qué? Garantizar reproducibilidad y evitar actualizaciones silenciosas
+#            que puedan introducir incompatibilidades o vulnerabilidades.
+# ¿Impacto? Usar 'latest' o tags sin patch permite ataques de supply chain
+#           donde una imagen comprometida se descarga automáticamente.
 services:
   db:
-    image: postgres:17-alpine
+    image: postgres:17.4-alpine
     container_name: nn_auth_db
     environment:
       POSTGRES_USER: nn_user
@@ -676,7 +752,7 @@ services:
       - nn_auth_data:/var/lib/postgresql/data
 
   mailpit:
-    image: axllent/mailpit
+    image: axllent/mailpit:v1.22.0
     container_name: nn_auth_mailpit
     ports:
       - "8025:8025" # Web UI
@@ -742,6 +818,7 @@ volumes:
 8. **Conventional Commits** — Sugerir mensajes de commit con formato correcto.
 9. **Seguridad primero** — Nunca almacenar passwords en texto plano, nunca exponer secrets.
 10. **Manejo de errores** — En Go, siempre manejar `error` explícitamente. Nunca usar `_` para ignorar errores.
+11. **Versiones pinadas SIEMPRE** — Usar versiones exactas en `go.mod`, `package.json` e imágenes Docker. Prohibido: `latest`, `*`, `^x.y.z`, `~x.y.z`, `x.y+`. Al agregar o actualizar una dependencia, ejecutar `govulncheck ./...` (Go) o `pnpm audit` (Node) antes de commitear.
 
 ---
 
@@ -824,9 +901,9 @@ volumes:
 
 ### Fase 8 — Documentación Final
 
-- [ ] Crear/actualizar `_docs/referencia-tecnica/architecture.md`
-- [ ] Crear/actualizar `_docs/referencia-tecnica/api-endpoints.md`
-- [ ] Crear/actualizar `_docs/referencia-tecnica/database-schema.md`
+- [ ] Crear/actualizar `docs/referencia-tecnica/architecture.md`
+- [ ] Crear/actualizar `docs/referencia-tecnica/api-endpoints.md`
+- [ ] Crear/actualizar `docs/referencia-tecnica/database-schema.md`
 - [ ] Actualizar `README.md` con instrucciones finales
 - [ ] ✅ Verificar: documentación completa y coherente
 

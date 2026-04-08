@@ -265,7 +265,7 @@ sudo systemctl stop postgresql
 
 ### Error: "go: command not found"
 
-El backend se ejecuta directo con `go run`, no requiere build previo con Docker. Si Go no está instalado, sigue la guía sin Docker en `_docs/setup/sin-docker.md`.
+El backend se ejecuta directo con `go run`, no requiere build previo con Docker. Si Go no está instalado, sigue la guía sin Docker en `docs/setup/sin-docker.md`.
 
 ### Error: "pnpm: command not found"
 

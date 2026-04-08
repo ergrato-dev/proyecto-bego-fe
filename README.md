@@ -195,7 +195,7 @@ proyecto/
 ├── .gitignore                        # Archivos ignorados por git
 ├── docker-compose.yml                # PostgreSQL 17 + Mailpit para desarrollo
 ├── README.md                         # ← Este archivo
-├── _docs/                            # Documentación técnica
+├── docs/                             # Documentación técnica
 ├── _assets/                          # Recursos estáticos
 ├── be/                               # Backend — Go + Gin + GORM
 │   ├── cmd/
@@ -271,17 +271,17 @@ Para las reglas completas, ver [.github/copilot-instructions.md](.github/copilot
 
 ## 📚 Documentación Adicional
 
-| Archivo                                       | Contenido                                                |
-| --------------------------------------------- | -------------------------------------------------------- |
-| `_docs/referencia-tecnica/architecture.md`    | Arquitectura general, flujos y decisiones técnicas       |
-| `_docs/referencia-tecnica/api-endpoints.md`   | Todos los endpoints con parámetros, respuestas y errores |
-| `_docs/referencia-tecnica/database-schema.md` | Esquema ER, tablas, columnas y migraciones               |
-| `_docs/conceptos/owasp-top-10.md`             | Implementación del OWASP Top 10 2021                     |
-| `_docs/conceptos/accesibilidad-aria-wcag.md`  | Estándares ARIA/WCAG 2.1 AA aplicados                    |
-| `_docs/conceptos/patrones-arquitectonicos.md` | Los 10 patrones arquitectónicos del proyecto             |
-| `_docs/setup/con-docker.md`                   | Guía paso a paso para levantar con Docker Compose        |
-| `_docs/setup/sin-docker.md`                   | Guía paso a paso para levantar sin Docker                |
-| `.github/copilot-instructions.md`             | Reglas y convenciones del proyecto                       |
+| Archivo                                      | Contenido                                                |
+| -------------------------------------------- | -------------------------------------------------------- |
+| `docs/referencia-tecnica/architecture.md`    | Arquitectura general, flujos y decisiones técnicas       |
+| `docs/referencia-tecnica/api-endpoints.md`   | Todos los endpoints con parámetros, respuestas y errores |
+| `docs/referencia-tecnica/database-schema.md` | Esquema ER, tablas, columnas y migraciones               |
+| `docs/conceptos/owasp-top-10.md`             | Implementación del OWASP Top 10 2021                     |
+| `docs/conceptos/accesibilidad-aria-wcag.md`  | Estándares ARIA/WCAG 2.1 AA aplicados                    |
+| `docs/conceptos/patrones-arquitectonicos.md` | Los 10 patrones arquitectónicos del proyecto             |
+| `docs/setup/con-docker.md`                   | Guía paso a paso para levantar con Docker Compose        |
+| `docs/setup/sin-docker.md`                   | Guía paso a paso para levantar sin Docker                |
+| `.github/copilot-instructions.md`            | Reglas y convenciones del proyecto                       |
 
 ---
 

@@ -354,13 +354,13 @@ Demostrar el flujo completo del sistema funcionando.
 
 ## Recursos Adicionales para el Estudiante
 
-| Recurso                  | URL / Comando                              |
-| ------------------------ | ------------------------------------------ |
-| Documentación de Gin     | https://gin-gonic.com/docs/                |
-| Documentación de GORM    | https://gorm.io/docs/                      |
-| golang-jwt               | https://github.com/golang-jwt/jwt          |
-| golang.org/x/crypto      | `go doc golang.org/x/crypto/bcrypt`        |
-| React Docs               | https://react.dev                          |
-| TailwindCSS              | https://tailwindcss.com/docs               |
-| OWASP Top 10             | `_docs/conceptos/owasp-top-10.md`          |
-| Arquitectura del sistema | `_docs/referencia-tecnica/architecture.md` |
+| Recurso                  | URL / Comando                             |
+| ------------------------ | ----------------------------------------- |
+| Documentación de Gin     | https://gin-gonic.com/docs/               |
+| Documentación de GORM    | https://gorm.io/docs/                     |
+| golang-jwt               | https://github.com/golang-jwt/jwt         |
+| golang.org/x/crypto      | `go doc golang.org/x/crypto/bcrypt`       |
+| React Docs               | https://react.dev                         |
+| TailwindCSS              | https://tailwindcss.com/docs              |
+| OWASP Top 10             | `docs/conceptos/owasp-top-10.md`          |
+| Arquitectura del sistema | `docs/referencia-tecnica/architecture.md` |

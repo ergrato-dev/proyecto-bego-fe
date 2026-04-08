@@ -451,7 +451,7 @@ proyecto/        ← Un solo repositorio git
 
 - Un solo `git clone` para obtener todo el proyecto
 - Los cambios de API y frontend van en el mismo commit
-- Documentación centralizada en `_docs/`
+- Documentación centralizada en `docs/`
 
 **Independencia de herramientas:**
 
