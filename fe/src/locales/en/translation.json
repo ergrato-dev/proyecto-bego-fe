@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "NN Auth System",
+    "tagline": "Secure and modern authentication system"
+  },
+  "nav": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "dashboard": "Dashboard",
+    "logout": "Sign out"
+  },
+  "auth": {
+    "email": "Email",
+    "email_placeholder": "you@email.com",
+    "password": "Password",
+    "password_placeholder": "At least 8 characters",
+    "full_name": "Full name",
+    "full_name_placeholder": "Your full name",
+    "current_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "login_title": "Sign in",
+    "login_subtitle": "Welcome back",
+    "login_button": "Sign in",
+    "register_title": "Create account",
+    "register_subtitle": "Join NN Auth System",
+    "register_button": "Sign up",
+    "forgot_password": "Forgot your password?",
+    "forgot_title": "Reset password",
+    "forgot_subtitle": "We'll send you a link by email",
+    "forgot_button": "Send link",
+    "reset_title": "New password",
+    "reset_subtitle": "Enter your new password",
+    "reset_button": "Change password",
+    "change_title": "Change password",
+    "change_button": "Update password",
+    "verify_email_title": "Verify email",
+    "verify_email_message": "Checking your verification...",
+    "already_have_account": "Already have an account?",
+    "no_account": "Don't have an account?"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {{name}}",
+    "email_verified": "Email verified",
+    "email_not_verified": "Email not verified",
+    "account_active": "Account active"
+  },
+  "landing": {
+    "hero_title": "Secure authentication",
+    "hero_subtitle": "Complete system with registration, login and password recovery",
+    "cta_register": "Create free account",
+    "cta_login": "Sign in"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalid_email": "Invalid email address",
+    "password_min": "At least 8 characters",
+    "passwords_not_match": "Passwords do not match",
+    "generic": "Something went wrong. Please try again.",
+    "unauthorized": "Session expired. Please sign in."
+  },
+  "success": {
+    "registered": "Account created. Check your email to verify it.",
+    "email_verified": "Email verified. You can now sign in.",
+    "password_changed": "Password updated successfully.",
+    "password_reset": "Password reset. You can now sign in.",
+    "forgot_sent": "If the email exists, you'll receive a link shortly."
+  },
+  "theme": {
+    "toggle_dark": "Dark mode",
+    "toggle_light": "Light mode"
+  },
+  "language": {
+    "es": "Español",
+    "en": "English"
+  }
+}

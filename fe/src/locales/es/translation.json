@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "NN Auth System",
+    "tagline": "Sistema de autenticación seguro y moderno"
+  },
+  "nav": {
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "dashboard": "Panel",
+    "logout": "Cerrar sesión"
+  },
+  "auth": {
+    "email": "Correo electrónico",
+    "email_placeholder": "tu@email.com",
+    "password": "Contraseña",
+    "password_placeholder": "Mínimo 8 caracteres",
+    "full_name": "Nombre completo",
+    "full_name_placeholder": "Tu nombre completo",
+    "current_password": "Contraseña actual",
+    "new_password": "Nueva contraseña",
+    "confirm_password": "Confirmar contraseña",
+    "login_title": "Iniciar sesión",
+    "login_subtitle": "Bienvenido de vuelta",
+    "login_button": "Entrar",
+    "register_title": "Crear cuenta",
+    "register_subtitle": "Únete a NN Auth System",
+    "register_button": "Registrarse",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "forgot_title": "Recuperar contraseña",
+    "forgot_subtitle": "Te enviaremos un enlace por email",
+    "forgot_button": "Enviar enlace",
+    "reset_title": "Nueva contraseña",
+    "reset_subtitle": "Ingresa tu nueva contraseña",
+    "reset_button": "Cambiar contraseña",
+    "change_title": "Cambiar contraseña",
+    "change_button": "Actualizar contraseña",
+    "verify_email_title": "Verificar email",
+    "verify_email_message": "Revisando tu verificación...",
+    "already_have_account": "¿Ya tienes cuenta?",
+    "no_account": "¿No tienes cuenta?"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "welcome": "Bienvenido, {{name}}",
+    "email_verified": "Email verificado",
+    "email_not_verified": "Email no verificado",
+    "account_active": "Cuenta activa"
+  },
+  "landing": {
+    "hero_title": "Autenticación segura",
+    "hero_subtitle": "Sistema completo con registro, login y recuperación de contraseña",
+    "cta_register": "Crear cuenta gratis",
+    "cta_login": "Iniciar sesión"
+  },
+  "errors": {
+    "required": "Este campo es obligatorio",
+    "invalid_email": "El email no es válido",
+    "password_min": "Mínimo 8 caracteres",
+    "passwords_not_match": "Las contraseñas no coinciden",
+    "generic": "Algo salió mal. Intenta de nuevo.",
+    "unauthorized": "Sesión expirada. Por favor inicia sesión."
+  },
+  "success": {
+    "registered": "Cuenta creada. Revisa tu email para verificarla.",
+    "email_verified": "Email verificado correctamente. Ya puedes iniciar sesión.",
+    "password_changed": "Contraseña actualizada exitosamente.",
+    "password_reset": "Contraseña restablecida. Ya puedes iniciar sesión.",
+    "forgot_sent": "Si el email existe, recibirás un enlace en breve."
+  },
+  "theme": {
+    "toggle_dark": "Modo oscuro",
+    "toggle_light": "Modo claro"
+  },
+  "language": {
+    "es": "Español",
+    "en": "English"
+  }
+}

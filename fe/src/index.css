@@ -1,0 +1,31 @@
+/*
+ * Archivo: index.css
+ * Descripción: Estilos globales de la aplicación.
+ * ¿Para qué? Importar TailwindCSS 4 y definir custom properties CSS
+ *            para el sistema de temas (dark/light mode).
+ * ¿Impacto? Sin @import "tailwindcss", las utility classes de Tailwind
+ *            no se generan y no hay estilos en la aplicación.
+ */
+
+/* ¿Qué? Import único de TailwindCSS 4 — no necesita configuración adicional.
+ * ¿Para qué? Genera todas las utility classes en el CSS final. */
+@import "tailwindcss";
+
+/* ¿Qué? Variables CSS globales para tipografía y renderizado.
+ * ¿Para qué? Garantizar que toda la app usa la misma fuente sans-serif
+ *            y el mismo antialiasing, sin importar el sistema operativo. */
+:root {
+  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ¿Qué? Reset mínimo del body.
+ * ¿Para qué? Eliminar márgenes por defecto del navegador — Tailwind maneja el layout. */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
