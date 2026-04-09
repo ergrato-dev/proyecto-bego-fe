@@ -38,15 +38,15 @@ Formato: `{número_secuencial}_{descripción}.{up|down}.sql`
 # Aplicar todas las migraciones pendientes
 go run ./cmd/migrate/main.go up
 
-# Revertir la última migración
-go run ./cmd/migrate/main.go down 1
-
-# Revertir todas las migraciones
+# Revertir la última migración aplicada (un paso)
 go run ./cmd/migrate/main.go down
 
 # Ver el estado actual
 go run ./cmd/migrate/main.go version
 ```
+
+> **Nota:** `down` revierte exactamente **un paso** (la migración más reciente).
+> Para revertir más pasos, ejecutarlo múltiples veces.
 
 ---
 

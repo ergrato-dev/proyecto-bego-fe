@@ -28,8 +28,8 @@ Sistema de autenticación completo para una empresa genérica "NN", diseñado co
 
 | Capa          | Tecnología                                                   |
 | ------------- | ------------------------------------------------------------ |
-| Backend       | Go 1.22+, Gin, GORM, golang-migrate, JWT (golang-jwt/jwt v5) |
-| Frontend      | React 18+, Vite, TypeScript, TailwindCSS 4+                  |
+| Backend       | Go 1.25+, Gin, GORM, golang-migrate, JWT (golang-jwt/jwt v5) |
+| Frontend      | React 18+, Vite, TypeScript, TailwindCSS 4+, i18next (es/en) |
 | Base de datos | PostgreSQL 17+ (Docker Compose o instalación local)          |
 | Email (dev)   | Mailpit — captura SMTP local, UI en puerto 8025              |
 | Testing       | Go testing + testify (BE), Vitest + Testing Library (FE)     |
@@ -43,9 +43,9 @@ Antes de comenzar, asegúrate de tener instalado:
 
 | Herramienta    | Versión mínima | Verificar con            |
 | -------------- | -------------- | ------------------------ |
-| Go             | 1.22+          | `go version`             |
+| Go             | 1.25+          | `go version`             |
 | Node.js        | 20 LTS+        | `node --version`         |
-| pnpm           | 9+             | `pnpm --version`         |
+| pnpm           | 10+            | `pnpm --version`         |
 | Docker         | 24+            | `docker --version`       |
 | Docker Compose | 2.20+          | `docker compose version` |
 | Git            | 2.40+          | `git --version`          |
@@ -76,44 +76,47 @@ git clone <url-del-repositorio>
 cd proyecto
 ```
 
-### 2. Levantar la base de datos
+### 2. Opción A — Todo con Docker (recomendado)
 
 ```bash
-# Inicia PostgreSQL 17 + Mailpit (captura de emails) en contenedores Docker
-docker compose up -d
-
-# Verificar que están corriendo
-docker compose ps
-# Deberías ver nn_auth_db y nn_auth_mailpit con estado "healthy"
+# Compila y levanta los 4 servicios: DB, Backend, Frontend y Mailpit
+docker compose up --build
 ```
 
-### 3. Configurar el Backend
+| Servicio   | URL                           | Descripción                    |
+| ---------- | ----------------------------- | ------------------------------ |
+| Frontend   | http://localhost:3000         | Aplicación React (Nginx)       |
+| Backend    | http://localhost:8000/health  | API Go/Gin                     |
+| Mailpit UI | http://localhost:8025         | Bandeja de emails de desarrollo|
+| PostgreSQL | localhost:5432                | BD (cliente SQL directo)       |
+
+> Las migraciones se aplican automáticamente al iniciar el backend.
+> Ver la guía completa en [docs/setup/con-docker.md](docs/setup/con-docker.md).
+
+### 2. Opción B — Solo BD en Docker, BE y FE nativo
+
+```bash
+# Solo levanta PostgreSQL y Mailpit
+docker compose up -d db mailpit
+
+# Verificar que están listos
+docker compose ps
+```
+
+### 3. Configurar el Backend (solo Opción B)
 
 ```bash
 cd be
-
-# Descargar dependencias de Go
+cp .env.example .env   # editar si es necesario
 go mod download
-
-# Copiar y configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus valores si es necesario
-
-# Ejecutar migraciones de base de datos
 go run ./cmd/migrate/main.go up
-# o usando la herramienta CLI de golang-migrate:
-# migrate -path migrations/ -database "$DATABASE_URL" up
 ```
 
-### 4. Configurar el Frontend
+### 4. Configurar el Frontend (solo Opción B)
 
 ```bash
 cd fe
-
-# Instalar dependencias con pnpm (¡NUNCA con npm!)
 pnpm install
-
-# Copiar y configurar variables de entorno
 cp .env.example .env
 ```
 
@@ -121,26 +124,29 @@ cp .env.example .env
 
 ## ▶️ Ejecución
 
-### Levantar todo el sistema (2 terminales + Docker)
+### Con Docker (un solo comando)
 
 ```bash
-# Terminal 1 — Base de datos (si no está corriendo)
-docker compose up -d
+docker compose up --build
+# → Frontend:  http://localhost:3000
+# → Backend:   http://localhost:8000
+# → Mailpit:   http://localhost:8025
+```
 
-# Terminal 2 — Backend (Go + Gin)
-cd be
-go run ./cmd/api/main.go
+### Sin Docker (desarrollo nativo, 2 terminales)
+
+```bash
+# Terminal 1 — Backend (Go + Gin)
+cd be && go run ./cmd/api/main.go
 # → API disponible en http://localhost:8000
-# → Swagger UI en http://localhost:8000/docs  (solo si ENVIRONMENT=development)
 
-# Terminal 3 — Frontend (React + Vite)
+# Terminal 2 — Frontend (React + Vite dev server)
 cd fe && pnpm dev
-# → Landing page en http://localhost:5173
 # → App disponible en http://localhost:5173
 ```
 
-> 📧 **Mailpit** — bandeja de entrada de emails de desarrollo: `http://localhost:8025`
-> Aquí se capturan los emails de verificación de cuenta y recuperación de contraseña.
+> 📧 **Mailpit** — bandeja de emails de desarrollo: `http://localhost:8025`
+> Captura los emails de verificación de cuenta y recuperación de contraseña.
 
 ---
 
@@ -195,10 +201,10 @@ cd fe && pnpm lint && pnpm format
 proyecto/
 ├── .github/copilot-instructions.md   # Reglas y convenciones del proyecto
 ├── .gitignore                        # Archivos ignorados por git
-├── docker-compose.yml                # PostgreSQL 17 + Mailpit para desarrollo
+| docker-compose.yml                # DB + Backend + Frontend + Mailpit (4 servicios)
 ├── README.md                         # ← Este archivo
 ├── docs/                             # Documentación técnica
-├── _assets/                          # Recursos estáticos
+├── assets/                           # Recursos estáticos (banner SVG)
 ├── be/                               # Backend — Go + Gin + GORM
 │   ├── cmd/
 │   │   ├── api/
@@ -248,7 +254,12 @@ proyecto/
     │   ├── pages/                    # Páginas/vistas
     │   ├── hooks/                    # Custom hooks
     │   ├── context/                  # Context providers
-    │   └── types/                    # Tipos TypeScript
+    │   ├── types/                    # Tipos TypeScript
+    │   ├── i18n.ts                   # Configuración i18next
+    │   ├── locales/es/ en/           # Traducciones (español + inglés)
+    │   └── __tests__/               # Tests Vitest + Testing Library
+    ├── Dockerfile                    # Multi-stage build (Node → Nginx)
+    ├── nginx.conf                    # Configuración Nginx para SPA
     ├── package.json
     └── vite.config.ts
 ```

@@ -18,14 +18,14 @@ El sistema sigue una **arquitectura de tres capas** clásica (3-Tier Architectur
 ┌─────────────────────────────────────────────────────────────────┐
 │                         CLIENTE                                  │
 │                   React + TypeScript + Vite                      │
-│              (Navegador Web — Puerto 5173 en dev)                │
+│         (Navegador Web — Puerto 5173 dev nativo / 3000 Docker)   │
 └────────────────────────────┬────────────────────────────────────┘
                              │ HTTP/HTTPS (JSON)
                              │ Authorization: Bearer <token>
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                       SERVIDOR (API)                             │
-│                    Go 1.22+ + Gin v1.9+                         │
+│                    Go 1.25+ + Gin v1.10+                        │
 │              (Aplicación REST — Puerto 8000 en dev)              │
 │                                                                  │
 │   ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐  │
@@ -419,16 +419,16 @@ Internet
 
 ## 7. Configuración por Entorno
 
-| Aspecto       | Desarrollo                      | Producción                            |
-| ------------- | ------------------------------- | ------------------------------------- |
-| Base de datos | Docker Compose (localhost:5432) | PostgreSQL gestionado (RDS, Supabase) |
-| Backend URL   | http://localhost:8000           | https://api.tu-dominio.com            |
-| Frontend URL  | http://localhost:5173           | https://tu-dominio.com                |
-| Email         | Mailpit (localhost:1025/8025)   | Resend / SendGrid (SMTP real)         |
-| JWT Secret    | Cualquier string ≥32 chars      | String criptográficamente aleatorio   |
-| CORS          | http://localhost:5173           | https://tu-dominio.com (exacto)       |
-| Logs          | Consola (desarrollo)            | Archivo + sistema de monitoreo        |
-| Rate limit    | Permisivo (desarrollo)          | Estricto (10 req/min en auth)         |
+| Aspecto       | Desarrollo nativo               | Desarrollo Docker                     | Producción                            |
+| ------------- | ------------------------------- | ------------------------------------- | ------------------------------------- |
+| Base de datos | Docker Compose (localhost:5432) | Docker Compose (localhost:5432)       | PostgreSQL gestionado (RDS, Supabase) |
+| Backend URL   | http://localhost:8000           | http://localhost:8000                 | https://api.tu-dominio.com            |
+| Frontend URL  | http://localhost:5173           | http://localhost:3000                 | https://tu-dominio.com                |
+| Email         | Mailpit (localhost:1025/8025)   | Mailpit (localhost:1025/8025)         | Resend / SendGrid (SMTP real)         |
+| JWT Secret    | Cualquier string ≥32 chars      | Cualquier string ≥32 chars (compose)  | String criptográficamente aleatorio   |
+| CORS          | http://localhost:5173           | http://localhost:3000                 | https://tu-dominio.com (exacto)       |
+| Logs          | Consola (gin.Default)           | Consola (GIN_MODE=release)            | Archivo + sistema de monitoreo        |
+| Rate limit    | Permisivo (desarrollo)          | Permisivo (desarrollo)                | Estricto (10 req/min en auth)         |
 
 ---
 
@@ -454,7 +454,9 @@ Content-Type: application/json
 
 ### CORS
 
-El middleware de CORS permite peticiones solo desde el origen del frontend configurado en la variable de entorno `FRONTEND_URL`. En desarrollo: `http://localhost:5173`.
+El middleware de CORS permite peticiones solo desde el origen del frontend configurado en la variable de entorno `FRONTEND_URL`.
+- Desarrollo nativo: `http://localhost:5173`
+- Desarrollo Docker: `http://localhost:3000` (configurado en `docker-compose.yml`)
 
 ---
 

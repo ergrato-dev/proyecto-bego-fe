@@ -64,6 +64,30 @@
 
 ---
 
+## Endpoint de Estado (`/api/v1/`)
+
+### GET `/health` — Estado del servidor
+
+Verifica que el servidor está activo y conectado.
+
+**Autenticación requerida:** No
+**Rate limit:** Sin límite
+
+#### Respuesta
+
+**200 OK**
+
+```json
+{
+  "status": "ok",
+  "environment": "development"
+}
+```
+
+> Usado por Docker Compose (`healthcheck`), load balancers y monitoreo para saber si el servicio está sano.
+
+---
+
 ## Endpoints de Autenticación (`/api/v1/auth/`)
 
 ### POST `/register` — Registrar nuevo usuario
@@ -431,6 +455,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 | Método | Ruta                           | Auth | Rate Limit      | Descripción                    |
 | ------ | ------------------------------ | ---- | --------------- | ------------------------------ |
+| GET    | `/api/v1/health`               | No   | Sin límite      | Estado del servidor            |
 | POST   | `/api/v1/auth/register`        | No   | 5/15min por IP  | Registrar nuevo usuario        |
 | POST   | `/api/v1/auth/login`           | No   | 10/15min por IP | Iniciar sesión                 |
 | POST   | `/api/v1/auth/refresh`         | No†  | 20/15min por IP | Renovar access token           |
