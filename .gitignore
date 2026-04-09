@@ -20,6 +20,8 @@
 be/bin/
 be/*.exe
 be/*.out
+be/migrate
+be/api
 
 # Caché de builds de Go
 be/tmp/
