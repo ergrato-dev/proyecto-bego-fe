@@ -103,10 +103,7 @@ export default function RegisterPage() {
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
           {t('auth.already_have_account')}{' '}
-          <Link
-            to="/login"
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
-          >
+          <Link to="/login" className="text-indigo-600 hover:underline dark:text-indigo-400">
             {t('nav.login')}
           </Link>
         </p>

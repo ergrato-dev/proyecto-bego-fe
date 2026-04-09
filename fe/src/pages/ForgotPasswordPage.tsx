@@ -46,10 +46,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <AuthLayout
-      title={t('auth.forgot_title')}
-      subtitle={t('auth.forgot_subtitle')}
-    >
+    <AuthLayout title={t('auth.forgot_title')} subtitle={t('auth.forgot_subtitle')}>
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {success && <Alert type="success" message={success} />}
         {error && <Alert type="error" message={error} onClose={() => setError('')} />}
@@ -72,10 +69,7 @@ export default function ForgotPasswordPage() {
         </div>
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          <Link
-            to="/login"
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
-          >
+          <Link to="/login" className="text-indigo-600 hover:underline dark:text-indigo-400">
             ← {t('nav.back_to_login')}
           </Link>
         </p>

@@ -90,10 +90,7 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
           {t('auth.no_account')}{' '}
-          <Link
-            to="/register"
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
-          >
+          <Link to="/register" className="text-indigo-600 hover:underline dark:text-indigo-400">
             {t('nav.register')}
           </Link>
         </p>

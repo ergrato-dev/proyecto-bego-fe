@@ -97,11 +97,7 @@ export default function ChangePasswordPage() {
 
         {/* ¿Qué? Dos botones alineados a la derecha — Cancelar y Guardar. */}
         <div className="flex justify-end gap-2">
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={() => navigate('/dashboard')}
-          >
+          <Button type="button" variant="secondary" onClick={() => navigate('/dashboard')}>
             {t('common.cancel')}
           </Button>
           <Button type="submit" loading={loading} disabled={!!success}>

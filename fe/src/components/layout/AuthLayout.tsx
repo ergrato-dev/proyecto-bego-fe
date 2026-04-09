@@ -26,11 +26,7 @@ interface AuthLayoutProps {
  * ¿Impacto? LanguageSwitcher y ThemeToggle aparecen en todas las páginas de auth
  *            automáticamente sin necesidad de importarlos en cada página.
  */
-export default function AuthLayout({
-  title,
-  subtitle,
-  children,
-}: AuthLayoutProps) {
+export default function AuthLayout({ title, subtitle, children }: AuthLayoutProps) {
   const { t } = useTranslation()
 
   return (
@@ -48,13 +44,9 @@ export default function AuthLayout({
           <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
             {/* ¿Qué? Encabezado de la tarjeta con título y subtítulo. */}
             <div className="mb-6">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {title}
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h1>
               {subtitle && (
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  {subtitle}
-                </p>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>
               )}
             </div>
 

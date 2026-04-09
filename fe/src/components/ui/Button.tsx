@@ -58,12 +58,7 @@ export default function Button({
     >
       {/* ¿Qué? SVG spinner animado visible solo en estado loading. */}
       {loading && (
-        <svg
-          className="h-4 w-4 animate-spin"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
+        <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle
             className="opacity-25"
             cx="12"

@@ -25,9 +25,7 @@ export default function LandingPage() {
       {/* ¿Qué? Header con logo, controles de idioma/tema y navegación. */}
       <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-          <span className="font-semibold text-gray-900 dark:text-white">
-            {t('app.name')}
-          </span>
+          <span className="font-semibold text-gray-900 dark:text-white">{t('app.name')}</span>
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
@@ -58,9 +56,7 @@ export default function LandingPage() {
             {t('landing.hero_title')}
           </h1>
 
-          <p className="text-lg text-gray-500 dark:text-gray-400">
-            {t('landing.hero_subtitle')}
-          </p>
+          <p className="text-lg text-gray-500 dark:text-gray-400">{t('landing.hero_subtitle')}</p>
 
           {/* ¿Qué? Botones centrados — excepción al patrón right-aligned
                porque el contexto es una sección hero, no un formulario. */}

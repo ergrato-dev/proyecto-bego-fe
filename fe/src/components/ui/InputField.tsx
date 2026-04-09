@@ -74,19 +74,13 @@ export default function InputField({
           'text-gray-900 dark:text-gray-100',
           'placeholder-gray-400 dark:placeholder-gray-500',
           'transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1',
-          error
-            ? 'border-red-500 dark:border-red-500'
-            : 'border-gray-300 dark:border-gray-600',
+          error ? 'border-red-500 dark:border-red-500' : 'border-gray-300 dark:border-gray-600',
         ].join(' ')}
       />
 
       {/* ¿Qué? Mensaje de error con role="alert" para lectores de pantalla. */}
       {error && (
-        <p
-          id={`${inputId}-error`}
-          role="alert"
-          className="text-xs text-red-600 dark:text-red-400"
-        >
+        <p id={`${inputId}-error`} role="alert" className="text-xs text-red-600 dark:text-red-400">
           {error}
         </p>
       )}

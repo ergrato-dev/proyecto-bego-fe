@@ -69,10 +69,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <AuthLayout
-      title={t('auth.reset_title')}
-      subtitle={t('auth.reset_subtitle')}
-    >
+    <AuthLayout title={t('auth.reset_title')} subtitle={t('auth.reset_subtitle')}>
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {success && <Alert type="success" message={success} />}
         {error && <Alert type="error" message={error} onClose={() => setError('')} />}
@@ -103,10 +100,7 @@ export default function ResetPasswordPage() {
         </div>
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          <Link
-            to="/login"
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
-          >
+          <Link to="/login" className="text-indigo-600 hover:underline dark:text-indigo-400">
             ← {t('nav.back_to_login')}
           </Link>
         </p>

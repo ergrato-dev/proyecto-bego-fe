@@ -37,17 +37,13 @@ export default function Alert({ type, message, onClose }: AlertProps) {
 
       {onClose && (
         <button
+          type="button"
           onClick={onClose}
           aria-label="Cerrar alerta"
           className="shrink-0 rounded hover:opacity-70"
         >
           {/* ¿Qué? Ícono X para cerrar la alerta si onClose fue provisto. */}
-          <svg
-            className="h-4 w-4"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
+          <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22z" />
           </svg>
         </button>

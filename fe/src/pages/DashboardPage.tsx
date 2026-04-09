@@ -37,9 +37,7 @@ export default function DashboardPage() {
       {/* ¿Qué? Barra de navegación superior con controles globales. */}
       <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
         <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
-          <span className="font-semibold text-gray-900 dark:text-white">
-            {t('app.name')}
-          </span>
+          <span className="font-semibold text-gray-900 dark:text-white">{t('app.name')}</span>
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
             <ThemeToggle />
@@ -65,20 +63,12 @@ export default function DashboardPage() {
             </h2>
             <dl className="space-y-3 text-sm">
               <div>
-                <dt className="text-gray-500 dark:text-gray-400">
-                  {t('auth.full_name')}
-                </dt>
-                <dd className="font-medium text-gray-900 dark:text-white">
-                  {user?.full_name}
-                </dd>
+                <dt className="text-gray-500 dark:text-gray-400">{t('auth.full_name')}</dt>
+                <dd className="font-medium text-gray-900 dark:text-white">{user?.full_name}</dd>
               </div>
               <div>
-                <dt className="text-gray-500 dark:text-gray-400">
-                  {t('auth.email')}
-                </dt>
-                <dd className="font-medium text-gray-900 dark:text-white">
-                  {user?.email}
-                </dd>
+                <dt className="text-gray-500 dark:text-gray-400">{t('auth.email')}</dt>
+                <dd className="font-medium text-gray-900 dark:text-white">{user?.email}</dd>
               </div>
               <div>
                 <dt className="mb-1 text-gray-500 dark:text-gray-400">

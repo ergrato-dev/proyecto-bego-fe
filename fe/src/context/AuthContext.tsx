@@ -12,21 +12,11 @@
  * En producción, la solución óptima son httpOnly cookies gestionadas por el servidor.
  */
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-  type ReactNode,
-} from 'react'
+import { createContext, useCallback, useContext, useState, type ReactNode } from 'react'
 
 import * as authApi from '../api/auth'
 import { setAccessToken } from '../api/axios'
-import type {
-  LoginRequest,
-  RegisterRequest,
-  UserResponse,
-} from '../types/auth'
+import type { LoginRequest, RegisterRequest, UserResponse } from '../types/auth'
 
 interface AuthContextType {
   /** Usuario autenticado actual, null si no hay sesión. */
