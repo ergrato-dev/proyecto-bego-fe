@@ -17,9 +17,9 @@ Instala y verifica cada herramienta antes de continuar:
 
 | Herramienta | Versión mínima | Cómo verificar   | Enlace de descarga                   |
 | ----------- | -------------- | ---------------- | ------------------------------------ |
-| Go          | 1.22+          | `go version`     | https://go.dev/dl/                   |
+| Go          | 1.25+          | `go version`     | https://go.dev/dl/                   |
 | Node.js     | 20 LTS+        | `node --version` | https://nodejs.org/                  |
-| pnpm        | 9+             | `pnpm --version` | `npm install -g pnpm`                |
+| pnpm        | 10+            | `pnpm --version` | `npm install -g pnpm`                |
 | PostgreSQL  | 17+            | `psql --version` | https://www.postgresql.org/download/ |
 | Git         | 2.0+           | `git --version`  | https://git-scm.com/                 |
 
@@ -98,16 +98,17 @@ Editar `be/.env`:
 ```bash
 # be/.env — Configuración para entorno sin Docker
 DATABASE_URL=postgresql://nn_user:nn_password@localhost:5432/nn_auth_db
-SECRET_KEY=dev-secret-key-change-in-production-min-32-chars-here
-ACCESS_TOKEN_EXPIRE_MINUTES=15
-REFRESH_TOKEN_EXPIRE_DAYS=7
+JWT_SECRET=dev-secret-key-change-in-production-min-32-chars-here
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES=15
+JWT_REFRESH_TOKEN_EXPIRE_DAYS=7
+PORT=8000
+ENVIRONMENT=development
+FRONTEND_URL=http://localhost:5173
 SMTP_HOST=localhost
 SMTP_PORT=1025
 SMTP_USERNAME=
 SMTP_PASSWORD=
 FROM_EMAIL=noreply@nn-company.com
-FRONTEND_URL=http://localhost:5173
-ENVIRONMENT=development
 ```
 
 ### Descargar dependencias Go
@@ -130,11 +131,10 @@ go run ./cmd/migrate/main.go up
 Deberías ver:
 
 ```
-Applying migration: 000001_create_users.up.sql        ✓
-Applying migration: 000002_create_password_reset_tokens.up.sql  ✓
-Applying migration: 000003_create_email_verification_tokens.up.sql  ✓
-Migrations applied successfully
+✅ Migraciones aplicadas correctamente
 ```
+
+> Si todas las migraciones ya estaban aplicadas, el comando no imprime nada (sin error).
 
 ---
 
@@ -328,15 +328,16 @@ cd be
 # Aplicar todas las migraciones pendientes
 go run ./cmd/migrate/main.go up
 
-# Revertir la última migración
-go run ./cmd/migrate/main.go down 1
+# Revertir la última migración aplicada (un paso atrás)
+go run ./cmd/migrate/main.go down
 
 # Ver en qué versión está la BD
 go run ./cmd/migrate/main.go version
-
-# Revertir todas las migraciones (¡borra todas las tablas!)
-go run ./cmd/migrate/main.go down
 ```
+
+> **Nota:** El comando `down` revierte **una sola migración** (el último paso aplicado).
+> Para revertir varias, ejecutarlo múltiples veces.
+> Los argumentos adicionales (ej. `down 1`) son ignorados por el CLI.
 
 ---
 
