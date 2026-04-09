@@ -1,0 +1,139 @@
+# Archivo: docker-compose.yml
+# Descripción: Orquestación completa del entorno de desarrollo — DB + Backend Go + Frontend React + Mailpit.
+# ¿Para qué? Levantar todo el sistema con un solo comando: docker compose up --build
+# ¿Impacto? Sin este archivo, cada servicio debe configurarse e iniciarse manualmente.
+#           Con este archivo, un solo comando replica el entorno completo en cualquier máquina.
+
+services:
+  # ─────────────────────────────────────────────────────────────
+  # Base de datos PostgreSQL
+  # ─────────────────────────────────────────────────────────────
+  # ¿Qué? PostgreSQL 17.4 con Alpine — versión pinada exacta.
+  # ¿Para qué? Garantizar que todos los entornos usan la misma versión de la BD.
+  # ¿Impacto? Usar 'latest' permitiría updates silenciosos que pueden romper la compatibilidad.
+  db:
+    image: postgres:17.4-alpine
+    container_name: nn_auth_db
+    environment:
+      POSTGRES_USER: nn_user
+      POSTGRES_PASSWORD: nn_password
+      POSTGRES_DB: nn_auth_db
+    ports:
+      - "5432:5432"
+    volumes:
+      # ¿Qué? Volumen nombrado para persistir los datos de PostgreSQL.
+      # ¿Para qué? Sin esto, los datos se pierden cada vez que el contenedor se detiene.
+      - nn_auth_data:/var/lib/postgresql/data
+    healthcheck:
+      # ¿Qué? Verificación periódica de que PostgreSQL está listo para aceptar conexiones.
+      # ¿Para qué? El servicio 'be' usa depends_on con condition: service_healthy —
+      #            no inicia hasta que este healthcheck pase.
+      # ¿Impacto? Sin healthcheck, el backend puede intentar conectarse antes de que
+      #           PostgreSQL haya terminado de inicializarse, causando errores de conexión.
+      test: ["CMD-SHELL", "pg_isready -U nn_user -d nn_auth_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nn_auth_network
+
+  # ─────────────────────────────────────────────────────────────
+  # Servidor SMTP de desarrollo (captura emails sin enviarlos)
+  # ─────────────────────────────────────────────────────────────
+  # ¿Qué? Mailpit v1.22.0 — servidor SMTP que captura todos los emails enviados.
+  # ¿Para qué? Permite probar los flujos de email (verificación, recuperación de contraseña)
+  #            sin enviar emails reales a usuarios.
+  # ¿Impacto? Sin Mailpit, habría que configurar un servidor SMTP real para desarrollo,
+  #           con riesgo de enviar emails de prueba a direcciones reales.
+  mailpit:
+    image: axllent/mailpit:v1.22.0
+    container_name: nn_auth_mailpit
+    ports:
+      - "8025:8025" # Web UI — ver emails capturados en http://localhost:8025
+      - "1025:1025" # Puerto SMTP — el backend envía aquí
+    networks:
+      - nn_auth_network
+
+  # ─────────────────────────────────────────────────────────────
+  # Backend — Go + Gin
+  # ─────────────────────────────────────────────────────────────
+  # ¿Qué? API REST construida con Go y Gin — compilada con multi-stage build.
+  # ¿Para qué? Servir todos los endpoints de autenticación bajo /api/v1/.
+  be:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    container_name: nn_auth_be
+    environment:
+      # ¿Qué? Hostname 'db' — nombre del servicio PostgreSQL dentro de la red Docker.
+      # ¿Para qué? Dentro de la red nn_auth_network, los servicios se comunican por nombre.
+      #            'db' resuelve a la IP interna del contenedor PostgreSQL.
+      # ¿Impacto? Usar 'localhost' aquí fallaría — dentro del contenedor, localhost
+      #           apunta AL PROPIO contenedor, no a la BD.
+      DATABASE_URL: postgresql://nn_user:nn_password@db:5432/nn_auth_db
+      JWT_SECRET: dev-secret-key-change-in-production-must-be-at-least-32-chars
+      JWT_ACCESS_TOKEN_EXPIRE_MINUTES: 15
+      JWT_REFRESH_TOKEN_EXPIRE_DAYS: 7
+      PORT: 8000
+      ENVIRONMENT: development
+      # ¿Qué? URL del frontend con el puerto Docker (3000) en lugar del de dev (5173).
+      # ¿Para qué? El backend usa FRONTEND_URL para construir links de verificación de email.
+      FRONTEND_URL: http://localhost:3000
+      # ¿Qué? Hostname 'mailpit' — nombre del servicio SMTP dentro de la red Docker.
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      FROM_EMAIL: noreply@nn-company.com
+    ports:
+      - "8000:8000"
+    depends_on:
+      # ¿Qué? Esperar a que PostgreSQL esté listo (healthcheck pasado) antes de iniciar.
+      # ¿Para qué? El backend ejecuta `./migrate up` al arrancar — necesita la BD disponible.
+      db:
+        condition: service_healthy
+      # ¿Qué? Mailpit solo necesita estar iniciado, no un healthcheck complejo.
+      mailpit:
+        condition: service_started
+    networks:
+      - nn_auth_network
+
+  # ─────────────────────────────────────────────────────────────
+  # Frontend — React + Vite compilado, servido con Nginx
+  # ─────────────────────────────────────────────────────────────
+  # ¿Qué? SPA React compilada con Vite y servida con Nginx en Alpine.
+  # ¿Para qué? Servir el frontend en el puerto 3000 del host.
+  fe:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+      args:
+        # ¿Qué? VITE_API_URL se incrusta en el bundle durante el build (no en runtime).
+        # ¿Para qué? Vite procesa las variables VITE_* en tiempo de compilación.
+        # ¿Impacto? Para apuntar a un backend diferente (staging, producción),
+        #           se debe reconstruir la imagen con un VITE_API_URL diferente.
+        VITE_API_URL: http://localhost:8000
+    container_name: nn_auth_fe
+    ports:
+      - "3000:80" # Puerto 3000 del host → puerto 80 de Nginx en el contenedor
+    depends_on:
+      - be
+    networks:
+      - nn_auth_network
+
+# ─────────────────────────────────────────────────────────────
+# Red y volúmenes
+# ─────────────────────────────────────────────────────────────
+networks:
+  nn_auth_network:
+    # ¿Qué? Red bridge aislada para todos los servicios de este proyecto.
+    # ¿Para qué? Los servicios pueden comunicarse entre sí por nombre (db, be, mailpit)
+    #            sin exponer puertos internos al host ni a otras redes Docker.
+    driver: bridge
+
+volumes:
+  nn_auth_data:
+    # ¿Qué? Volumen nombrado gestionado por Docker para persistir datos de PostgreSQL.
+    # ¿Para qué? Los datos sobreviven a docker compose down y reinicios del contenedor.
+    # ¿Impacto? docker compose down -v elimina este volumen — úsalo solo si quieres
+    #           reiniciar la BD desde cero.
