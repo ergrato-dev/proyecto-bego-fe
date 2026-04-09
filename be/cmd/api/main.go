@@ -14,6 +14,9 @@ import (
 
 	"nn-auth-system/internal/config"
 	"nn-auth-system/internal/database"
+	"nn-auth-system/internal/handlers"
+	"nn-auth-system/internal/middleware"
+	"nn-auth-system/internal/services"
 )
 
 func main() {
@@ -62,6 +65,10 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	// ¿Qué? Aplicar cabeceras de seguridad HTTP a todas las respuestas.
+	// ¿Para qué? Proteger contra XSS, clickjacking y otros ataques del lado del cliente.
+	router.Use(middleware.SecurityHeaders())
+
 	// ¿Qué? Grupo base de rutas de la API con versionamiento.
 	// ¿Para qué? Prefixar todas las rutas con /api/v1 permite versionar la API en el futuro
 	//            sin romper clientes existentes cuando se lance /api/v2.
@@ -81,6 +88,44 @@ func main() {
 	// api.POST("/auth/register", authHandler.Register)
 	// api.POST("/auth/login", authHandler.Login)
 	// ...
+
+	// ¿Qué? Instanciar el servicio de autenticación con la BD y la config.
+	// ¿Para qué? Inyectar dependencias: el service conoce la BD y el config.
+	// ¿Impacto? Si se cambia la BD o el config, solo cambia la instanciación aquí.
+	authService := services.NewAuthService(db, cfg)
+
+	// ¿Qué? Instanciar los handlers con el service inyectado.
+	authHandler := handlers.NewAuthHandler(authService)
+	userHandler := handlers.NewUserHandler(authService)
+
+	// ¿Qué? Rate limiter para proteger los endpoints de autenticación.
+	// ¿Para qué? Limitar 10 requests/min por IP en rutas sensibles — previene brute force.
+	authRateLimiter := middleware.NewAuthRateLimiter()
+
+	// ¿Qué? Rutas de autenticación — sin autenticación requerida.
+	// ¿Para qué? Registro, login, y recuperación de contraseña son públicos.
+	auth := api.Group("/auth")
+	{
+		// ¿Qué? Rate limiting solo en login y register — los más susceptibles a brute force.
+		// ¿Para qué? verify-email y reset-password no necesitan el mismo nivel de protección
+		//            ya que dependen de tokens aleatorios de 256 bits — imposibles de adivinar.
+		auth.POST("/register", authRateLimiter, authHandler.Register)
+		auth.POST("/login", authRateLimiter, authHandler.Login)
+		auth.POST("/refresh", authHandler.RefreshToken)
+		auth.POST("/forgot-password", authRateLimiter, authHandler.ForgotPassword)
+		auth.POST("/reset-password", authHandler.ResetPassword)
+		auth.POST("/verify-email", authHandler.VerifyEmail)
+		// ¿Qué? change-password requiere estar autenticado — se registra en el grupo protegido.
+	}
+
+	// ¿Qué? Rutas protegidas — requieren JWT válido en el header Authorization.
+	// ¿Para qué? Garantizar que solo usuarios autenticados accedan a estos endpoints.
+	protected := api.Group("")
+	protected.Use(middleware.RequireAuth(cfg))
+	{
+		protected.POST("/auth/change-password", authHandler.ChangePassword)
+		protected.GET("/users/me", userHandler.GetMe)
+	}
 
 	addr := ":" + cfg.Port
 	log.Printf("Servidor iniciado en http://localhost%s (entorno: %s)", addr, cfg.Environment)
