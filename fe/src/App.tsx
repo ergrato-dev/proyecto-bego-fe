@@ -1,48 +1,61 @@
 /**
  * Archivo: App.tsx
- * Descripción: Componente raíz de la aplicación — placeholder de Fase 5.
- * ¿Para qué? Verificar que el setup (Vite + React + TailwindCSS + i18n) funciona
- *            antes de implementar el router y las páginas en Fase 6.
- * ¿Impacto? Este componente será reemplazado por el router completo en Fase 6.
+ * Descripción: Componente raíz — define el árbol de providers y el router.
+ * ¿Para qué? Envolver toda la aplicación con ThemeProvider y AuthProvider
+ *            garantiza que cualquier componente puede acceder al tema y
+ *            al estado de autenticación sin prop drilling.
+ * ¿Impacto? El orden de providers importa: ThemeProvider va primero porque
+ *            no depende de nada; AuthProvider después porque ThemeToggle
+ *            (dentro de AuthLayout) necesita acceder a useTheme.
  */
 
-import { useTranslation } from 'react-i18next'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
+import ProtectedRoute from './components/layout/ProtectedRoute'
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import DashboardPage from './pages/DashboardPage'
+import ChangePasswordPage from './pages/ChangePasswordPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
+import VerifyEmailPage from './pages/VerifyEmailPage'
 
 /**
  * App es el componente raíz de la aplicación.
- * ¿Para qué? Placeholder que verifica: React, TailwindCSS e i18n funcionan.
+ * ¿Para qué? Centralizar providers y rutas en un único punto de entrada.
+ * ¿Impacto? BrowserRouter usa la History API del navegador — las URLs
+ *            son limpias (/login, /dashboard) en vez de hash (#/login).
  */
 function App() {
-  const { t, i18n } = useTranslation()
-
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center">
-      <div className="text-center space-y-4 p-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          {t('app.name')}
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          {t('app.tagline')}
-        </p>
-        <div className="flex gap-2 justify-center">
-          <button
-            onClick={() => i18n.changeLanguage('es')}
-            className="px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium"
-          >
-            ES
-          </button>
-          <button
-            onClick={() => i18n.changeLanguage('en')}
-            className="px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium"
-          >
-            EN
-          </button>
-        </div>
-        <p className="text-xs text-gray-400 dark:text-gray-600">
-          Fase 5 — Setup completado ✓ | Tailwind + React {'{18.3.1}'} + i18next
-        </p>
-      </div>
-    </div>
+    <BrowserRouter>
+      {/* ¿Qué? ThemeProvider inicializa el dark/light mode antes de renderizar. */}
+      <ThemeProvider>
+        {/* ¿Qué? AuthProvider provee el estado de sesión a todas las rutas. */}
+        <AuthProvider>
+          <Routes>
+            {/* ────────────── Rutas públicas ────────────── */}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/verify-email" element={<VerifyEmailPage />} />
+
+            {/* ── Rutas protegidas — requieren JWT válido en memoria ── */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/change-password" element={<ChangePasswordPage />} />
+            </Route>
+
+            {/* ¿Qué? Ruta comodín — redirige cualquier URL desconocida al inicio. */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
 

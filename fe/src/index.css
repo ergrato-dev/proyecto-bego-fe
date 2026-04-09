@@ -9,7 +9,15 @@
 
 /* ¿Qué? Import único de TailwindCSS 4 — no necesita configuración adicional.
  * ¿Para qué? Genera todas las utility classes en el CSS final. */
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* ¿Qué? Variante dark basada en la clase CSS 'dark' en la etiqueta <html>.
+ * ¿Para qué? Permitir toggle manual del tema (dark/light) via ThemeProvider.
+ *            Por defecto TailwindCSS v4 usa prefers-color-scheme; esta directiva
+ *            cambia el modo a class-based, compatible con ese enfoque.
+ * ¿Impacto? Sin esto, las clases dark: de Tailwind solo responden al SO
+ *            y el toggle manual no tendría efecto visual. */
+@variant dark (&:where(.dark, .dark *));
 
 /* ¿Qué? Variables CSS globales para tipografía y renderizado.
  * ¿Para qué? Garantizar que toda la app usa la misma fuente sans-serif

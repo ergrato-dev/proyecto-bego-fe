@@ -1,13 +1,15 @@
 {
   "app": {
     "name": "NN Auth System",
-    "tagline": "Secure and modern authentication system"
+    "tagline": "Secure and modern authentication system",
+    "footer": "NN Auth System — SENA Educational Project"
   },
   "nav": {
     "login": "Sign in",
     "register": "Sign up",
     "dashboard": "Dashboard",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "back_to_login": "Back to sign in"
   },
   "auth": {
     "email": "Email",
@@ -42,9 +44,12 @@
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome, {{name}}",
+    "profile": "Profile",
+    "email_status": "Email status",
     "email_verified": "Email verified",
     "email_not_verified": "Email not verified",
-    "account_active": "Account active"
+    "account_active": "Account active",
+    "actions": "Actions"
   },
   "landing": {
     "hero_title": "Secure authentication",
@@ -52,11 +57,15 @@
     "cta_register": "Create free account",
     "cta_login": "Sign in"
   },
+  "common": {
+    "cancel": "Cancel"
+  },
   "errors": {
     "required": "This field is required",
     "invalid_email": "Invalid email address",
     "password_min": "At least 8 characters",
     "passwords_not_match": "Passwords do not match",
+    "invalid_token": "Invalid or expired link. Please request a new one.",
     "generic": "Something went wrong. Please try again.",
     "unauthorized": "Session expired. Please sign in."
   },
@@ -68,8 +77,8 @@
     "forgot_sent": "If the email exists, you'll receive a link shortly."
   },
   "theme": {
-    "toggle_dark": "Dark mode",
-    "toggle_light": "Light mode"
+    "toggle_dark": "Enable dark mode",
+    "toggle_light": "Enable light mode"
   },
   "language": {
     "es": "Español",

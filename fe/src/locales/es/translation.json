@@ -1,13 +1,15 @@
 {
   "app": {
     "name": "NN Auth System",
-    "tagline": "Sistema de autenticación seguro y moderno"
+    "tagline": "Sistema de autenticación seguro y moderno",
+    "footer": "NN Auth System — Proyecto educativo SENA"
   },
   "nav": {
     "login": "Iniciar sesión",
     "register": "Registrarse",
     "dashboard": "Panel",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "back_to_login": "Volver al inicio de sesión"
   },
   "auth": {
     "email": "Correo electrónico",
@@ -42,9 +44,12 @@
   "dashboard": {
     "title": "Panel de control",
     "welcome": "Bienvenido, {{name}}",
+    "profile": "Perfil",
+    "email_status": "Estado del email",
     "email_verified": "Email verificado",
     "email_not_verified": "Email no verificado",
-    "account_active": "Cuenta activa"
+    "account_active": "Cuenta activa",
+    "actions": "Acciones"
   },
   "landing": {
     "hero_title": "Autenticación segura",
@@ -52,11 +57,15 @@
     "cta_register": "Crear cuenta gratis",
     "cta_login": "Iniciar sesión"
   },
+  "common": {
+    "cancel": "Cancelar"
+  },
   "errors": {
     "required": "Este campo es obligatorio",
     "invalid_email": "El email no es válido",
     "password_min": "Mínimo 8 caracteres",
     "passwords_not_match": "Las contraseñas no coinciden",
+    "invalid_token": "Enlace inválido o expirado. Solicita uno nuevo.",
     "generic": "Algo salió mal. Intenta de nuevo.",
     "unauthorized": "Sesión expirada. Por favor inicia sesión."
   },
@@ -68,8 +77,8 @@
     "forgot_sent": "Si el email existe, recibirás un enlace en breve."
   },
   "theme": {
-    "toggle_dark": "Modo oscuro",
-    "toggle_light": "Modo claro"
+    "toggle_dark": "Activar modo oscuro",
+    "toggle_light": "Activar modo claro"
   },
   "language": {
     "es": "Español",
