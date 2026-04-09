@@ -1,0 +1,136 @@
+<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NN Auth System — Sistema de Autenticación Completo">
+
+  <!-- ── Fondo base ── -->
+  <rect width="1200" height="280" fill="#0d1117"/>
+
+  <!-- ── Borde exterior sutil ── -->
+  <rect x="0.5" y="0.5" width="1199" height="279" fill="none" stroke="#21262d" stroke-width="1"/>
+
+  <!-- ── Barra de acento izquierda ── -->
+  <rect x="0" y="0" width="4" height="280" fill="#58a6ff"/>
+
+  <!-- ─────────────────────────────────────────────
+       Ícono de candado — geometría pura, sin degradados
+       Argolla: semicírculo r=30 + pilares verticales
+       Cuerpo: rect redondeado con borde azul
+       Ojal: círculo + ranura rectangular
+  ───────────────────────────────────────────────── -->
+
+  <!-- Argolla (se dibuja primero para quedar BAJO el cuerpo) -->
+  <path d="M 64,132 L 64,104 A 30,30 0 0 0 124,104 L 124,132"
+        fill="none"
+        stroke="#58a6ff"
+        stroke-width="12"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Cuerpo del candado (cubre la parte inferior de la argolla) -->
+  <rect x="42" y="132" width="104" height="76" rx="10"
+        fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+
+  <!-- Ojal: círculo superior -->
+  <circle cx="94" cy="160" r="11" fill="#0d1117"/>
+
+  <!-- Ojal: ranura inferior -->
+  <rect x="90" y="160" width="8" height="17" rx="3" fill="#0d1117"/>
+
+  <!-- ─────────────────────────────────────────────
+       Contenido textual
+  ───────────────────────────────────────────────── -->
+
+  <!-- Línea de acento corta sobre el título -->
+  <rect x="180" y="98" width="48" height="4" rx="2" fill="#58a6ff"/>
+
+  <!-- Título principal -->
+  <text x="180" y="156"
+        font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="800"
+        font-size="68"
+        fill="#f0f6fc"
+        letter-spacing="-1">NN Auth System</text>
+
+  <!-- Subtítulo -->
+  <text x="182" y="188"
+        font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="400"
+        font-size="20"
+        fill="#8b949e"
+        letter-spacing="0.3">Sistema de Autenticación Completo · Proyecto Educativo SENA · 2026</text>
+
+  <!-- ─────────────────────────────────────────────
+       Fila de chips de tecnología
+  ───────────────────────────────────────────────── -->
+
+  <!-- Go -->
+  <rect x="182" y="210" width="52" height="28" rx="5" fill="#00acd7"/>
+  <text x="208" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Go</text>
+
+  <!-- Gin -->
+  <rect x="244" y="210" width="52" height="28" rx="5" fill="#00b4a0"/>
+  <text x="270" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Gin</text>
+
+  <!-- React -->
+  <rect x="306" y="210" width="66" height="28" rx="5" fill="#20232a" stroke="#61dafb" stroke-width="1.5"/>
+  <text x="339" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#61dafb" text-anchor="middle">React</text>
+
+  <!-- TypeScript -->
+  <rect x="382" y="210" width="96" height="28" rx="5" fill="#3178c6"/>
+  <text x="430" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">TypeScript</text>
+
+  <!-- PostgreSQL -->
+  <rect x="488" y="210" width="104" height="28" rx="5" fill="#336791"/>
+  <text x="540" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">PostgreSQL</text>
+
+  <!-- Docker -->
+  <rect x="602" y="210" width="72" height="28" rx="5" fill="#2496ed"/>
+  <text x="638" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Docker</text>
+
+  <!-- JWT -->
+  <rect x="684" y="210" width="52" height="28" rx="5" fill="#7c3aed"/>
+  <text x="710" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">JWT</text>
+
+  <!-- Vite -->
+  <rect x="746" y="210" width="55" height="28" rx="5" fill="#646cff"/>
+  <text x="773" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Vite</text>
+
+  <!-- Tailwind -->
+  <rect x="811" y="210" width="82" height="28" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="852" y="229" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">Tailwind</text>
+
+  <!-- ─────────────────────────────────────────────
+       Decoración: cuadrícula de puntos (top-right)
+       Mayoría oscuros, algunos en acento azul
+  ───────────────────────────────────────────────── -->
+
+  <rect x="1080" y="28" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1100" y="28" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1120" y="28" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1140" y="28" width="6" height="6" rx="1" fill="#58a6ff"/>
+  <rect x="1160" y="28" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1180" y="28" width="6" height="6" rx="1" fill="#21262d"/>
+
+  <rect x="1080" y="50" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1100" y="50" width="6" height="6" rx="1" fill="#58a6ff"/>
+  <rect x="1120" y="50" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1140" y="50" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1160" y="50" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1180" y="50" width="6" height="6" rx="1" fill="#21262d"/>
+
+  <rect x="1080" y="72" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1100" y="72" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1120" y="72" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1140" y="72" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1160" y="72" width="6" height="6" rx="1" fill="#58a6ff"/>
+  <rect x="1180" y="72" width="6" height="6" rx="1" fill="#21262d"/>
+
+  <rect x="1080" y="94" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1100" y="94" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1120" y="94" width="6" height="6" rx="1" fill="#58a6ff"/>
+  <rect x="1140" y="94" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1160" y="94" width="6" height="6" rx="1" fill="#21262d"/>
+  <rect x="1180" y="94" width="6" height="6" rx="1" fill="#21262d"/>
+
+  <!-- ── Barra inferior de cierre ── -->
+  <rect x="0" y="276" width="1200" height="4" fill="#21262d"/>
+
+</svg>

@@ -1,4 +1,6 @@
-# 🔐 NN Auth System
+<p align="center">
+  <img src="assets/banner.svg" alt="NN Auth System — Sistema de Autenticación Completo" width="100%"/>
+</p>
 
 > Proyecto educativo — SENA | Marzo 2026
 
