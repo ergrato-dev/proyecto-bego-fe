@@ -137,10 +137,7 @@ describe('RegisterPage', () => {
 
     // El componente llama setTimeout(() => navigate('/login'), 3000).
     // waitFor espera hasta 4s a que mockNavigate sea llamado.
-    await waitFor(
-      () => expect(mockNavigate).toHaveBeenCalledWith('/login'),
-      { timeout: 4000 },
-    )
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/login'), { timeout: 4000 })
   }, 6000)
 
   // ──────────────────── Error del servidor ────────────────────

@@ -83,12 +83,12 @@ cd proyecto
 docker compose up --build
 ```
 
-| Servicio   | URL                           | Descripción                    |
-| ---------- | ----------------------------- | ------------------------------ |
-| Frontend   | http://localhost:3000         | Aplicación React (Nginx)       |
-| Backend    | http://localhost:8000/health  | API Go/Gin                     |
-| Mailpit UI | http://localhost:8025         | Bandeja de emails de desarrollo|
-| PostgreSQL | localhost:5432                | BD (cliente SQL directo)       |
+| Servicio   | URL                          | Descripción                     |
+| ---------- | ---------------------------- | ------------------------------- |
+| Frontend   | http://localhost:3000        | Aplicación React (Nginx)        |
+| Backend    | http://localhost:8000/health | API Go/Gin                      |
+| Mailpit UI | http://localhost:8025        | Bandeja de emails de desarrollo |
+| PostgreSQL | localhost:5432               | BD (cliente SQL directo)        |
 
 > Las migraciones se aplican automáticamente al iniciar el backend.
 > Ver la guía completa en [docs/setup/con-docker.md](docs/setup/con-docker.md).
