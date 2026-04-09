@@ -44,25 +44,28 @@
 
 ### 2.2 Frontend (`fe/`)
 
-| Herramienta                 | Versión pinada | Rol                                          |
-| --------------------------- | -------------- | -------------------------------------------- |
-| Node.js                     | **20.18.2**    | Runtime de JavaScript (LTS Maintenance)      |
-| react                       | **18.3.1**     | Biblioteca para interfaces de usuario        |
-| react-dom                   | **18.3.1**     | Renderizado de React en el DOM               |
-| vite                        | **6.2.0**      | Bundler y dev server ultrarrápido            |
-| typescript                  | **5.8.2**      | Superset tipado de JavaScript                |
-| tailwindcss                 | **4.1.0**      | Framework CSS utility-first                  |
-| @tailwindcss/vite           | **4.1.0**      | Plugin oficial de TailwindCSS para Vite      |
-| react-router-dom            | **7.4.0**      | Enrutamiento del lado del cliente            |
-| axios                       | **1.8.4**      | Cliente HTTP para comunicación con la API    |
-| vitest                      | **3.1.0**      | Framework de testing compatible con Vite     |
-| @testing-library/react      | **16.3.0**     | Utilidades de testing para componentes React |
-| @testing-library/user-event | **14.6.1**     | Simulación de eventos de usuario en tests    |
-| @types/react                | **18.3.20**    | Tipos TypeScript para React                  |
-| @types/react-dom            | **18.3.5**     | Tipos TypeScript para ReactDOM               |
-| eslint                      | **9.23.0**     | Linter para TypeScript/React                 |
-| prettier                    | **3.5.3**      | Formateador de código                        |
-| jsdom                       | **26.0.0**     | Simulación del DOM en Node.js para tests     |
+| Herramienta                      | Versión pinada | Rol                                           |
+| -------------------------------- | -------------- | --------------------------------------------- |
+| Node.js                          | **20.18.2**    | Runtime de JavaScript (LTS Maintenance)       |
+| react                            | **18.3.1**     | Biblioteca para interfaces de usuario         |
+| react-dom                        | **18.3.1**     | Renderizado de React en el DOM                |
+| vite                             | **6.2.0**      | Bundler y dev server ultrarrápido             |
+| typescript                       | **5.8.2**      | Superset tipado de JavaScript                 |
+| tailwindcss                      | **4.1.0**      | Framework CSS utility-first                   |
+| @tailwindcss/vite                | **4.1.0**      | Plugin oficial de TailwindCSS para Vite       |
+| react-router-dom                 | **7.4.0**      | Enrutamiento del lado del cliente             |
+| axios                            | **1.8.4**      | Cliente HTTP para comunicación con la API     |
+| vitest                           | **3.1.0**      | Framework de testing compatible con Vite      |
+| @testing-library/react           | **16.3.0**     | Utilidades de testing para componentes React  |
+| @testing-library/user-event      | **14.6.1**     | Simulación de eventos de usuario en tests     |
+| @types/react                     | **18.3.20**    | Tipos TypeScript para React                   |
+| @types/react-dom                 | **18.3.5**     | Tipos TypeScript para ReactDOM                |
+| eslint                           | **9.23.0**     | Linter para TypeScript/React                  |
+| prettier                         | **3.5.3**      | Formateador de código                         |
+| jsdom                            | **26.0.0**     | Simulación del DOM en Node.js para tests      |
+| i18next                          | **25.2.1**     | Motor de internacionalización (i18n)          |
+| react-i18next                    | **15.5.1**     | Integración de i18next con React (hooks)      |
+| i18next-browser-languagedetector | **8.0.5**      | Detección automática del idioma del navegador |
 
 ### 2.3 Base de Datos
 
@@ -303,6 +306,12 @@ proyecto/                          # Raíz del monorepo
         ├── main.tsx
         ├── App.tsx
         ├── index.css
+        ├── i18n.ts                # Configuración de i18next
+        ├── locales/
+        │   ├── es/
+        │   │   └── translation.json   # Traducciones en español (por defecto)
+        │   └── en/
+        │       └── translation.json   # Traducciones en inglés
         ├── api/
         │   ├── auth.ts
         │   └── axios.ts
@@ -790,6 +799,8 @@ volumes:
 - ✅ Custom hooks para encapsular lógica reutilizable
 - ✅ Rutas protegidas con componente `ProtectedRoute`
 - ✅ Loading states para operaciones asíncronas
+- ✅ i18n con `react-i18next` — toda cadena visible usa `t('clave')`, nunca texto hardcodeado
+- ✅ Toda clave nueva debe existir en `es/translation.json` **y** `en/translation.json`
 
 ### 14.4 Diseño y UX/UI — OBLIGATORIO
 
@@ -879,6 +890,7 @@ volumes:
 - [ ] Instalar dependencias con `pnpm`
 - [ ] Configurar TailwindCSS
 - [ ] Crear `.env.example`
+- [ ] Configurar i18next: crear `fe/src/i18n.ts` y archivos `locales/es|en/translation.json`
 - [ ] ✅ Verificar: `pnpm dev` → app visible en `http://localhost:5173`
 
 ### Fase 6 — Frontend Auth
@@ -887,11 +899,11 @@ volumes:
 - [ ] Crear cliente HTTP (`api/auth.ts`, `api/axios.ts`)
 - [ ] Crear AuthContext + Provider
 - [ ] Crear hook `useAuth`
-- [ ] Crear componentes UI (InputField, Button, Alert)
+- [ ] Crear componentes UI (InputField, Button, Alert, LanguageSwitcher)
 - [ ] Crear ProtectedRoute
 - [ ] Crear páginas: Landing, Login, Register, Dashboard, ChangePassword, ForgotPassword, ResetPassword
 - [ ] Crear páginas legales y formulario de contacto
-- [ ] ✅ Verificar: flujo completo funciona contra la API
+- [ ] ✅ Verificar: flujo completo funciona contra la API y el cambio de idioma (es/en) funciona en todas las páginas
 
 ### Fase 7 — Tests Frontend
 
