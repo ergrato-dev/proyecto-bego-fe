@@ -13,7 +13,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import ProtectedRoute from './components/layout/ProtectedRoute'
-import LandingPage from './pages/LandingPage'
+import { LandingPage } from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
@@ -21,6 +21,9 @@ import ChangePasswordPage from './pages/ChangePasswordPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import VerifyEmailPage from './pages/VerifyEmailPage'
+import { TerminosDeUsoPage } from './pages/TerminosDeUsoPage'
+import { PoliticaPrivacidadPage } from './pages/PoliticaPrivacidadPage'
+import { PoliticaCookiesPage } from './pages/PoliticaCookiesPage'
 
 /**
  * App es el componente raíz de la aplicación.
@@ -43,6 +46,9 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
+            <Route path="/terminos-de-uso" element={<TerminosDeUsoPage />} />
+            <Route path="/privacidad" element={<PoliticaPrivacidadPage />} />
+            <Route path="/cookies" element={<PoliticaCookiesPage />} />
 
             {/* ── Rutas protegidas — requieren JWT válido en memoria ── */}
             <Route element={<ProtectedRoute />}>

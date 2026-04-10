@@ -52,10 +52,78 @@
     "actions": "Actions"
   },
   "landing": {
-    "hero_title": "Secure authentication",
-    "hero_subtitle": "Complete system with registration, login and password recovery",
-    "cta_register": "Create free account",
-    "cta_login": "Sign in"
+    "nav": {
+      "login": "Sign in",
+      "register": "Sign up"
+    },
+    "hero": {
+      "title": "Secure authentication,",
+      "titleHighlight": "production ready",
+      "subtitle": "Registration, login, email verification, password change and recovery. A complete system built with Go, Gin, React and security best practices.",
+      "ctaPrimary": "Get started",
+      "ctaSecondary": "Sign in"
+    },
+    "features": {
+      "title": "System features",
+      "subtitle": "Everything you need for a robust and educational authentication system.",
+      "register": {
+        "title": "Secure registration",
+        "description": "Real-time data validation. Passwords are stored hashed with bcrypt — never in plain text."
+      },
+      "jwt": {
+        "title": "JWT authentication",
+        "description": "15-minute access tokens and 7-day refresh tokens. Stateless, efficient and industry standard."
+      },
+      "email": {
+        "title": "Email verification",
+        "description": "Confirms identity before activating the account. Single-use link sent automatically upon registration."
+      },
+      "password": {
+        "title": "Password change",
+        "description": "Authenticated users can change their password by entering the current one. Strict backend validation."
+      },
+      "recovery": {
+        "title": "Email recovery",
+        "description": "Complete forgot/reset flow with single-use token and 1-hour expiration."
+      },
+      "security": {
+        "title": "OWASP security",
+        "description": "Security-first design: no SQL injection, no XSS, configured CORS and inputs validated with go-playground/validator."
+      }
+    },
+    "howItWorks": {
+      "title": "How it works?",
+      "subtitle": "Three steps to start using the system.",
+      "step1": {
+        "title": "Create your account",
+        "description": "Register your email and password. You'll receive an email to verify and activate your account."
+      },
+      "step2": {
+        "title": "Sign in",
+        "description": "Authenticate with your credentials. The system will issue an access token and a refresh token."
+      },
+      "step3": {
+        "title": "Access the system",
+        "description": "With your active session, manage your profile and password from the dashboard."
+      }
+    },
+    "techStack": {
+      "title": "Tech stack",
+      "subtitle": "Modern, typed and industry-proven tools.",
+      "ariaLabel": "Project technologies"
+    },
+    "cta": {
+      "title": "Ready to start",
+      "subtitle": "Create your account and explore the complete authentication system. Learn by implementing.",
+      "button": "Create free account"
+    },
+    "footer": {
+      "credit": "Educational project — SENA",
+      "terms": "Terms of use",
+      "privacy": "Privacy policy",
+      "cookies": "Cookie policy",
+      "contact": "Contact"
+    }
   },
   "common": {
     "cancel": "Cancel"
@@ -83,5 +151,243 @@
   "language": {
     "es": "Español",
     "en": "English"
+  },
+  "legal": {
+    "backToHome": "Back to home",
+    "footerCredit": "Educational project — SENA",
+    "terms": {
+      "title": "Terms of Use",
+      "intro1": "These Terms of Use govern access to and use of the service provided by <strong>{{responsable}}</strong> ({{nit}}), domiciled in <strong>{{domicilio}}</strong>.",
+      "intro2": "By accessing or using the service, the user expressly accepts these terms. If you disagree, you must refrain from using the platform.",
+      "s1": {
+        "heading": "Purpose of the Service",
+        "p1": "This service is an educational authentication system developed as a SENA project. It allows users to register, log in, verify their email address, change and recover their password.",
+        "p2": "The service is exclusively for academic and technical demonstration purposes. It does not constitute a commercial product nor does it create obligations of continuous availability.",
+        "p3": "The source code is <strong>educational material</strong>; its use, adaptation and reference are permitted with proper attribution."
+      },
+      "s2": {
+        "heading": "Registration and User Account",
+        "p1": "To access the system's features, the user must register by providing a full name, valid email address and a password meeting the minimum security requirements.",
+        "p2": "The user is responsible for keeping their credentials confidential. In case of unauthorized use, they must notify {{email}} immediately.",
+        "p3": "Each person may register only one account. Registration with false data or impersonating third parties is prohibited and may result in account cancellation."
+      },
+      "s3": {
+        "heading": "Acceptable Use",
+        "intro": "The user agrees to use the service in a <strong>lawful, responsible and compliant</strong> manner. The following are expressly prohibited:",
+        "li1": "Attempting to circumvent authentication mechanisms or access other users' accounts.",
+        "li2": "Performing brute force attacks, SQL injection, XSS or other exploitation techniques.",
+        "li3": "Using the service for activities illegal under Colombian law.",
+        "li4": "Sharing access credentials with third parties or allowing unauthorized account use.",
+        "li5": "Automating requests that generate excessive server load (DoS/DDoS).",
+        "closing": "Breach of these rules entitles the operator to suspend or cancel the account without prior notice."
+      },
+      "s4": {
+        "heading": "Intellectual Property",
+        "p1": "The source code, design, documentation and pedagogical materials are owned by their authors and protected under <strong>Law 23 of 1982</strong> (Colombian Copyright Law).",
+        "p2": "Use for educational purposes is authorized provided proper attribution is included. Commercial use is not permitted without express authorization."
+      },
+      "s5": {
+        "heading": "Privacy and Personal Data",
+        "p1": "The processing of the user's personal data is governed by the service's <strong>Privacy Policy</strong>, available at <privacyLink>this link</privacyLink>, in accordance with Law 1581 of 2012."
+      },
+      "s6": {
+        "heading": "Limitation of Liability",
+        "p1": "The service is provided 'as is' for educational purposes. The operator does not guarantee continuous availability, absence of errors, or fitness for a specific purpose in production environments.",
+        "p2": "In no event shall the operator be liable for direct, indirect or consequential damages arising from use or inability to use the system, except in cases of fraud or gross negligence under the <strong>Colombian Civil Code</strong>."
+      },
+      "s7": {
+        "heading": "Modifications to Terms",
+        "p1": "The operator reserves the right to modify these terms at any time. Modifications take effect upon publication in the service.",
+        "p2": "Continued use of the service after publication of changes constitutes the user's <strong>implied acceptance</strong> of the new terms."
+      },
+      "s8": {
+        "heading": "Applicable Law and Jurisdiction",
+        "p1": "These Terms are governed by the laws of the <strong>Republic of Colombia</strong>, in particular Law 527 of 1999 (e-commerce), Law 1480 of 2011 (Consumer Statute) and the Civil Code.",
+        "p2": "Any dispute shall be submitted to the competent courts of the <strong>Circuit of Bogotá D.C.</strong>, the parties waiving any other jurisdiction that may apply."
+      },
+      "s9": {
+        "heading": "Contact",
+        "intro": "For inquiries related to these Terms of Use, you may contact us at:",
+        "companyLabel": "Company:",
+        "emailLabel": "Email:",
+        "domicilioLabel": "Domicile:"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy and Personal Data Processing",
+      "intro1": "This Policy describes how <strong>{{responsable}}</strong> ({{nit}}) collects, uses, stores and protects users' personal data, in compliance with Law 1581 of 2012 and Decree 1377 of 2013.",
+      "intro2": "By registering for the service, the holder <strong>grants their free, prior, express and informed authorization</strong> for the processing of their data in accordance with this policy.",
+      "s1": {
+        "heading": "Data Controller",
+        "intro": "Personal data is processed by:",
+        "companyLabel": "Company name:",
+        "nitLabel": "Tax ID:",
+        "domicilioLabel": "Domicile:",
+        "contactLabel": "Data email:",
+        "phoneLabel": "Phone:"
+      },
+      "s2": {
+        "heading": "Personal Data Collected",
+        "intro": "The system collects <strong>only the minimum data necessary</strong> to provide the service (minimization principle, Art. 4 Law 1581/2012):",
+        "li1": "<strong>Full name:</strong> identification of the holder within the system.",
+        "li2": "<strong>Email address:</strong> login credential and communication channel.",
+        "li3": "<strong>Hashed password:</strong> stored irreversibly with bcrypt — never in plain text.",
+        "li4": "<strong>Registration timestamp:</strong> technical audit field (created_at).",
+        "li5": "<strong>Session tokens:</strong> access token (15 min) and refresh token (7 days) to maintain the active session.",
+        "noCollect": "<strong>Sensitive data is not collected</strong> (health, biometrics, racial origin, financial data, sexual orientation) pursuant to Art. 6 of Law 1581/2012."
+      },
+      "s3": {
+        "heading": "Purposes of Processing",
+        "intro": "Data is processed <strong>exclusively</strong> for the following purposes (Art. 4 lit. b, Law 1581/2012):",
+        "li1": "<strong>Authentication:</strong> verifying the user's identity at each login.",
+        "li2": "<strong>Account security:</strong> detecting unauthorized access and preventing fraud.",
+        "li3": "<strong>Transactional communications:</strong> sending email verification and password recovery emails.",
+        "li4": "<strong>Technical audit:</strong> logging access events for traceability.",
+        "li5": "<strong>Educational purposes:</strong> demonstrating security best practices within the SENA project context.",
+        "closing": "<strong>Data is not used</strong> for advertising, commercial profiling, or sold to third parties."
+      },
+      "s4": {
+        "heading": "Legal Basis and Authorization",
+        "p1": "Processing is based on the holder's <strong>express authorization</strong>, granted when completing the registration form (Art. 9, Law 1581/2012 and Art. 5, Decree 1377/2013).",
+        "p2": "Authorization is a necessary condition to use the service. Without it, it is not possible to create an account or access the system's features.",
+        "p3": "The holder may revoke their authorization at any time by following the procedure described in the <rightsLink>Holder Rights</rightsLink> section."
+      },
+      "s5": {
+        "heading": "Holder Rights",
+        "intro": "Pursuant to Art. 8 of Law 1581/2012, the holder has the right to:",
+        "li1": "<strong>Know</strong> the personal data held about them and information related to its processing.",
+        "li2": "<strong>Update and rectify</strong> their data when it is inaccurate, incomplete or outdated.",
+        "li3": "<strong>Delete</strong> their data from the system when the legal conditions for processing are not met (right to erasure).",
+        "li4": "<strong>Revoke authorization</strong> for processing, unless there is a legal or contractual duty to retain it.",
+        "li5": "<strong>File a complaint</strong> with the Superintendency of Industry and Commerce (SIC) when they consider their rights have been violated.",
+        "li6": "<strong>Refrain</strong> from answering questions about sensitive data.",
+        "procedure": "To exercise any of these rights, the holder must send their request to <emailLink>{{email}}</emailLink> identifying themselves and describing the right they wish to exercise.",
+        "timeframe": "The controller will respond within <strong>15 business days</strong> of receiving the request (Art. 14, Law 1581/2012)."
+      },
+      "s6": {
+        "heading": "Data Retention",
+        "intro": "Data is retained for the time <strong>strictly necessary</strong> to fulfill the processing purposes:",
+        "li1": "Active account data: throughout the entire duration of the relationship with the user.",
+        "li2": "Recovery and verification tokens: automatically deleted when expired or used.",
+        "li3": "Audit data (logs): maximum 12 months from generation.",
+        "closing": "Once account deletion is requested, data is permanently deleted within a maximum of 30 days, unless legally required to retain it."
+      },
+      "s7": {
+        "heading": "Transfers and Processors",
+        "intro": "Personal data <strong>is not transferred to third parties</strong> for commercial purposes. It may only be shared in the following cases:",
+        "li1": "<strong>Technical providers:</strong> infrastructure and hosting services, under confidentiality agreements as data processors.",
+        "li2": "<strong>Competent authorities:</strong> when there is a court order or administrative authority request with legal standing.",
+        "li3": "<strong>Anonymized educational purposes:</strong> statistical data with no possibility of identifying the holder."
+      },
+      "s8": {
+        "heading": "Security Measures",
+        "intro": "Technical and organizational measures are implemented to protect data against unauthorized access, loss or alteration:",
+        "li1": "<strong>Passwords hashed</strong> with bcrypt (cost factor 10) — irreversible by design.",
+        "li2": "<strong>JWT tokens</strong> with short expiry (15 min) signed with a 32+ character secret key.",
+        "li3": "Encrypted TLS/HTTPS connections on the transport layer.",
+        "li4": "Rate limiting to prevent brute force attacks on authentication endpoints.",
+        "li5": "HTTP security headers: <strong>X-Content-Type-Options, X-Frame-Options, Content-Security-Policy</strong>."
+      },
+      "s9": {
+        "heading": "National Database Registry (RNBD)",
+        "p1": "Pursuant to Decree 886 of 2014, databases containing personal data must be registered in the <strong>National Database Registry</strong> managed by the SIC.",
+        "p2": "As an educational project in a development environment, the system's database is under evaluation for RNBD registration when operating in production.",
+        "p3": "For more information about the RNBD, visit <sicLink>www.sic.gov.co</sicLink>."
+      },
+      "s10": {
+        "heading": "Supervisory Authority",
+        "p1": "The Colombian authority competent in personal data protection matters is the <strong>Superintendency of Industry and Commerce (SIC)</strong>.",
+        "portalLabel": "Web portal:",
+        "phoneLabel": "Toll-free line:",
+        "addressLabel": "Address:"
+      },
+      "s11": {
+        "heading": "Validity and Amendments",
+        "p1": "This policy enters into force on <strong>February 1, 2026</strong> and remains in effect until replaced by an updated version.",
+        "p2": "The controller reserves the right to amend this policy to reflect regulatory or service changes. Changes will be <strong>notified by email</strong> to registered holders.",
+        "p3": "For any questions about this policy, write to <emailLink>{{email}}</emailLink>."
+      }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "intro1": "This policy explains what cookies are, which ones the <strong>NN Auth System</strong> service uses, their purpose and how you can manage them.",
+      "intro2": "The use of cookies that involve processing personal data is subject to the <strong>Law 1581 of 2012</strong>. For detailed information on personal data, see the <privacyLink>Privacy Policy</privacyLink>.",
+      "s1": {
+        "heading": "What are cookies?",
+        "p1": "Cookies are <strong>small text files</strong> that a website stores in the user's browser when they visit it. They allow information to be remembered between requests and sessions.",
+        "p2": "Cookies are not viruses or executable programs. They are simple text data that the browser sends to the server with each HTTP request, in accordance with the RFC 6265 standard."
+      },
+      "s2": {
+        "heading": "Types of Cookies Used",
+        "p1": "The NN Auth System service uses exclusively two categories of cookies, all first-party:",
+        "authCategory": {
+          "title": "Authentication Cookies (strictly necessary)",
+          "p1": "These are <strong>essential</strong> for the authentication system to function. Without them, it is not possible to maintain the user's session.",
+          "p2": "Session cookies (<code>access_token</code> and <code>refresh_token</code>) have the <code>HttpOnly</code> attribute enabled, which prevents access from JavaScript and mitigates XSS attacks (OWASP A03)."
+        },
+        "prefCategory": {
+          "title": "Preference Cookies",
+          "p1": "They remember user preferences (such as dark/light theme) between sessions. They do not contain personally identifiable data."
+        }
+      },
+      "s3": {
+        "heading": "Service Cookie Table",
+        "intro": "The following lists <strong>all cookies</strong> used by the service, their purpose, duration and type:",
+        "tableHeaders": {
+          "name": "Name",
+          "purpose": "Purpose",
+          "duration": "Duration",
+          "type": "Type"
+        },
+        "cookies": {
+          "access_token": {
+            "purpose": "Authentication — JWT containing authenticated user data",
+            "duration": "15 minutes",
+            "type": "HttpOnly, Secure"
+          },
+          "refresh_token": {
+            "purpose": "Session renewal — allows obtaining a new access_token",
+            "duration": "7 days",
+            "type": "HttpOnly, Secure"
+          },
+          "theme_preference": {
+            "purpose": "Visual theme preference (dark/light)",
+            "duration": "1 year",
+            "type": "localStorage"
+          }
+        }
+      },
+      "s4": {
+        "heading": "Cookie Security",
+        "intro": "Authentication cookies implement the security measures recommended by <strong>OWASP (A05: Security Misconfiguration)</strong>:",
+        "li1": "<strong>HttpOnly:</strong> session cookies are not accessible from JavaScript, preventing theft via XSS.",
+        "li2": "<strong>Secure:</strong> cookies are only transmitted over encrypted HTTPS connections.",
+        "li3": "<strong>SameSite=Strict:</strong> prevents cookies from being sent in cross-site requests, mitigating CSRF attacks.",
+        "li4": "<strong>Short expiry:</strong> the access_token expires in 15 minutes, limiting the exposure window in case of theft."
+      },
+      "s5": {
+        "heading": "Cookie Management and Control",
+        "intro": "The user can manage cookies through their browser settings:",
+        "li1": "<strong>Google Chrome:</strong> Settings → Privacy and security → Cookies and other site data.",
+        "li2": "<strong>Mozilla Firefox:</strong> Settings → Privacy & Security → Cookies and Site Data.",
+        "li3": "<strong>Safari:</strong> Preferences → Privacy → Manage Website Data.",
+        "li4": "<strong>Microsoft Edge:</strong> Settings → Cookies and site permissions.",
+        "warning": "<strong>Warning:</strong> disabling authentication cookies will prevent login and use of the system, as they are strictly necessary for its operation."
+      },
+      "s6": {
+        "heading": "No Tracking or Advertising Cookies",
+        "p1": "The NN Auth System service <strong>does not use</strong> tracking cookies, third-party analytics, behavioral advertising or commercial profiling tools.",
+        "p2": "<strong>No third-party services</strong> that set their own cookies are integrated (such as Google Analytics, Facebook Pixel, etc.). All cookies are first-party."
+      },
+      "s7": {
+        "heading": "Relationship with the Privacy Policy",
+        "p1": "Authentication cookies contain or process personal data (user identifier). Their processing is subject to the service's <privacyLink>Privacy Policy</privacyLink>, in accordance with Law 1581 of 2012."
+      },
+      "s8": {
+        "heading": "Updates to this Policy",
+        "p1": "This policy may be updated to reflect technical changes to the service or new regulatory provisions. The last updated date appears in the document header.",
+        "p2": "For questions about cookie use, contact us at <emailLink>legal@nn-company.co</emailLink>."
+      }
+    }
   }
 }
