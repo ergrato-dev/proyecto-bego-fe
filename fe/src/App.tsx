@@ -24,6 +24,7 @@ import VerifyEmailPage from './pages/VerifyEmailPage'
 import { TerminosDeUsoPage } from './pages/TerminosDeUsoPage'
 import { PoliticaPrivacidadPage } from './pages/PoliticaPrivacidadPage'
 import { PoliticaCookiesPage } from './pages/PoliticaCookiesPage'
+import { ContactPage } from './pages/ContactPage'
 
 /**
  * App es el componente raíz de la aplicación.
@@ -49,6 +50,7 @@ function App() {
             <Route path="/terminos-de-uso" element={<TerminosDeUsoPage />} />
             <Route path="/privacidad" element={<PoliticaPrivacidadPage />} />
             <Route path="/cookies" element={<PoliticaCookiesPage />} />
+            <Route path="/contacto" element={<ContactPage />} />
 
             {/* ── Rutas protegidas — requieren JWT válido en memoria ── */}
             <Route element={<ProtectedRoute />}>
